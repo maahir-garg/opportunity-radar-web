@@ -58,11 +58,11 @@ const FIELD_ORDER = [
 type FieldKey = (typeof FIELD_ORDER)[number];
 
 const SUBMIT_ERROR_MESSAGE =
-  'Something went wrong sending your details. Your answers are still here — try again.';
+  'Something went wrong sending your details. Your answers are still here, try again.';
 
 /**
  * The waitlist sign-up form and its success state (contract §10). Renders
- * only the form itself — no section wrapper, heading or lead; the landing
+ * only the form itself: no section wrapper, heading or lead; the landing
  * page supplies those around this component.
  */
 export function WaitlistForm() {
@@ -308,7 +308,7 @@ export function WaitlistForm() {
         <Field
           id={fieldId('channel')}
           label="How did you hear about Radar?"
-          help="Optional — this tells us which channels are working."
+          help="Optional: this tells us which channels are working."
           error={errors.channel}
         >
           {(fieldProps) => (

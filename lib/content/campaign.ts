@@ -1,5 +1,5 @@
 /**
- * All copy for /marketing (CS3216 Assignment 1, Milestone 11).
+ * All copy for /marketing: the launch campaign plan for the Radar pilot.
  *
  * Everything here must obey docs/BUILD-CONTRACT.md §7: no fabricated counts,
  * no testimonials, no claimed NUS partnership, no "AI-powered", no promised
@@ -28,9 +28,9 @@ export type GlanceItem = {
 };
 
 export const campaignHeader = {
-  overline: 'Milestone 11 — launch campaign',
-  title: 'Find your signal — launch campaign',
-  lead: 'One goal: fill the pilot list with Year 2–3 NUS undergraduates who already feel the discovery problem — the missed deadline, the opportunity buried in a group chat, the six places you’d have to check to be sure you saw everything.',
+  overline: 'Launch campaign',
+  title: 'Find your signal: launch campaign',
+  lead: 'One goal: fill the pilot list with Year 2–3 NUS undergraduates who already feel the discovery problem: the missed deadline, the opportunity buried in a group chat, the six places you’d have to check to be sure you saw everything.',
 } as const;
 
 export const glanceItems: GlanceItem[] = [
@@ -42,7 +42,7 @@ export const glanceItems: GlanceItem[] = [
   {
     icon: 'calendar-range',
     label: 'Window',
-    value: '6 weeks — 4 pre-launch, 1 launch week, 1 sustain week',
+    value: '6 weeks: 4 pre-launch, 1 launch week, 1 sustain week',
   },
   {
     icon: 'wallet',
@@ -74,7 +74,7 @@ export const personas: Persona[] = [
     details: [
       { label: 'Where they are', value: 'Faculty and interest-group Telegram chats, email they skim, Instagram they scroll' },
       { label: 'What they need', value: 'A short list that fits their year and interests, with the deadline and the reason up front' },
-      { label: 'How we reach them', value: 'Inside the channels they already open — a digest, a short video, a poster near where they walk' },
+      { label: 'How we reach them', value: 'Inside the channels they already open: a digest, a short video, a poster near where they walk' },
     ],
   },
   {
@@ -82,7 +82,7 @@ export const personas: Persona[] = [
     kind: 'Secondary',
     name: 'Societies and organisers',
     summary:
-      'They want attendance and applicants. They are both a source of listings and a distribution channel — they can post their own events and share Radar with their members.',
+      'They want attendance and applicants. They are both a source of listings and a distribution channel. They can post their own events and share Radar with their members.',
     details: [
       { label: 'Where they are', value: 'Running their own Telegram channels, Instagram pages and mailing lists' },
       { label: 'What they need', value: 'Free visibility for their event or programme, with no extra admin' },
@@ -110,7 +110,7 @@ export const channels: ChannelCard[] = [
       'A weekly "3 closing this week" digest, cross-posted into faculty and interest-group channels we already have access to. Each item deep-links to the landing page with a per-channel UTM.',
     whyItWorks:
       'This is where students already read announcements. A digest is quick to scan and easy for a channel admin to forward.',
-    cost: 'Free — one moderator’s time to write and post each week',
+    cost: 'Free: one moderator’s time to write and post each week',
     whatWeMeasure: 'Clicks tagged utm_source=telegram and sign-ups where the form’s attribution field says Telegram',
   },
   {
@@ -121,7 +121,7 @@ export const channels: ChannelCard[] = [
       'A "Missed It" series on Instagram and TikTok: one 30–45s deadline story per post, each built around one real-shaped scenario (see the shot list below).',
     whyItWorks:
       'Vertical video already gets watched in these feeds, and a single deadline is a small, complete story that needs no explanation.',
-    cost: 'Free to post — filming and editing done on a phone, no paid promotion',
+    cost: 'Free to post: filming and editing done on a phone, no paid promotion',
     whatWeMeasure: 'Link-in-bio clicks tagged utm_source=instagram and video completion rate on-platform',
   },
   {
@@ -132,7 +132,7 @@ export const channels: ChannelCard[] = [
       'A3 posters and laptop stickers with a QR code at COM, Central Library, UTown and faculty noticeboards, placed only on noticeboards where posting is already allowed.',
     whyItWorks:
       'Repetition in places students already pass builds recognition, and a QR code removes the friction of typing a URL.',
-    cost: 'Under S$150 for printing — the only line item in the budget',
+    cost: 'Under S$150 for printing, the only line item in the budget',
     whatWeMeasure: 'Scans tagged utm_source=poster; we respect noticeboard rules and never place anything on benches or in restrooms',
   },
   {
@@ -143,7 +143,7 @@ export const channels: ChannelCard[] = [
       'A one-page pack sent to societies and organisers: what Radar is, what we’re asking for, and a submission form for their listings.',
     whyItWorks:
       'They get free visibility for their programme; we get listings and a channel willing to share Radar with their own members.',
-    cost: 'Free — email and a shared form',
+    cost: 'Free: email and a shared form',
     whatWeMeasure: 'Listings submitted per society and sign-ups tagged utm_source=society',
   },
   {
@@ -154,7 +154,7 @@ export const channels: ChannelCard[] = [
       'A short paragraph placed inside society and faculty newsletters that already go out, instead of starting a Radar mailing list of our own.',
     whyItWorks:
       'These lists already have an audience and a trust relationship. We are borrowing reach, not building it from zero.',
-    cost: 'Free — we only need one editor to agree to include the paragraph',
+    cost: 'Free: we only need one editor to agree to include the paragraph',
     whatWeMeasure: 'Sign-ups tagged utm_source=newsletter, grouped by which newsletter carried it',
   },
   {
@@ -165,7 +165,7 @@ export const channels: ChannelCard[] = [
       'Every opportunity gets a public share card, and the reserved-handle sign-up mechanic gives early users something worth posting about.',
     whyItWorks:
       'A specific, useful link is easier to forward than a general pitch for "an app." A claimed handle gives people a reason to tell a friend.',
-    cost: 'Free — built into the product itself',
+    cost: 'Free: built into the product itself',
     whatWeMeasure: 'Sign-ups tagged utm_source=sharecard and referral mentions in the optional note field',
   },
 ];
@@ -184,7 +184,7 @@ export const consideredAndDeprioritised: DeprioritisedChannel[] = [
   {
     name: 'Paid social ads',
     reason:
-      'Wrong economics for a single-campus product with a near-zero budget — we would be paying to reach people outside NUS to find the small number who are inside it.',
+      'Wrong economics for a single-campus product with a near-zero budget. We would be paying to reach people outside NUS to find the small number who are inside it.',
   },
 ];
 
@@ -197,7 +197,7 @@ export type ShotListRow = {
 };
 
 export const videoConceptSummary =
-  'The same opportunity scrolls past unnoticed in three different apps — Telegram, email, Instagram. Radar surfaces it once, with a deadline and a one-line reason it matters. Closes on the landing URL and the disclaimer.';
+  'The same opportunity scrolls past unnoticed in three different apps: Telegram, email, Instagram. Radar surfaces it once, with a deadline and a one-line reason it matters. Closes on the landing URL and the disclaimer.';
 
 export const shotList: ShotListRow[] = [
   {
@@ -225,21 +225,21 @@ export const shotList: ShotListRow[] = [
     id: 4,
     shot: 'Cut to an Instagram feed; the same flyer appears as a story, swiped past.',
     onScreenText: 'And your Instagram.',
-    voiceover: 'And a society posted it here — for about six hours.',
+    voiceover: 'And a society posted it here, for about six hours.',
     seconds: 4,
   },
   {
     id: 5,
     shot: 'Screen wipes to a phone opening Radar; the For You screen loads.',
     onScreenText: 'Radar catches it once.',
-    voiceover: 'Radar picks it up once —',
+    voiceover: 'Radar picks it up once.',
     seconds: 5,
   },
   {
     id: 6,
     shot: 'For You screen: the same talk as an opportunity card with deadline and match reason visible.',
     onScreenText: 'Deadline. Why it matched. One place.',
-    voiceover: '— with the deadline, why it matched you, and where it came from.',
+    voiceover: 'With the deadline, why it matched you, and where it came from.',
     seconds: 6,
   },
   {
@@ -263,17 +263,17 @@ export const shotListTotalSeconds = shotList.reduce((total, row) => total + row.
 export const posterConcept = {
   headline: 'Find your signal.',
   body: 'One weekly list of what’s closing soon, matched to your year and interests.',
-  qrLabel: 'QR placeholder — links to radar.nus/join',
-  footer: 'Student-built for NUS students — not an official NUS service.',
+  qrLabel: 'QR placeholder: links to radar.nus/join',
+  footer: 'Student-built for NUS students. Not an official NUS service.',
 };
 
 export const telegramSamplePost = {
   channelName: 'Radar Weekly · 3 closing this week',
   body: [
     '3 closing this week:',
-    '• SoC UROP applications — closes 2 Sep, 11:59pm',
-    '• NUS Enterprise pitch night sign-up — closes 4 Sep, 6pm',
-    '• Data science mentorship intake — closes 5 Sep, 11:59pm',
+    '• SoC UROP applications: closes 2 Sep, 11:59pm',
+    '• NUS Enterprise pitch night sign-up: closes 4 Sep, 6pm',
+    '• Data science mentorship intake: closes 5 Sep, 11:59pm',
     '',
     'Full list + why each one matched: radar.nus/join',
   ].join('\n'),
@@ -293,7 +293,7 @@ export const outreachEmail = {
     '',
     'I’m building Radar, a student project that collects internships, research, competitions, exchanges, grants and talks from around NUS into one list, matched to what someone’s actually interested in.',
     '',
-    'We’re not affiliated with NUS and this isn’t a partnership pitch — just a request: could we list your upcoming events and applications? It’s free, takes about two minutes with the form below, and every listing keeps your name as the organiser and links straight back to your own page.',
+    'We’re not affiliated with NUS and this isn’t a partnership pitch, just a request: could we list your upcoming events and applications? It’s free, takes about two minutes with the form below, and every listing keeps your name as the organiser and links straight back to your own page.',
     '',
     'Submission form: [link]',
     '',
@@ -397,7 +397,7 @@ export const utmRows: UtmRow[] = [
 
 export const measurementNotes = {
   conversion:
-    'Landing → form conversion is read as sign-ups divided by landing visits carrying that UTM, using whatever basic page-view count our hosting gives us — no separate analytics platform.',
+    'Landing → form conversion is read as sign-ups divided by landing visits carrying that UTM, using whatever basic page-view count our hosting gives us, no separate analytics platform.',
   attribution:
     'The sign-up form asks "How did you hear about Radar?" (Telegram, Instagram or TikTok, a friend, a poster on campus, a student society, or other). That single field is our attribution backstop when a UTM gets stripped by forwarding or screenshotting.',
   honest:
@@ -412,7 +412,7 @@ export type WhyItWorksPoint = {
 export const whyItWorks: WhyItWorksPoint[] = [
   {
     title: 'We meet students where they already are',
-    body: 'Telegram, existing newsletters and the noticeboards students already pass — not a new app or list they have to opt into first.',
+    body: 'Telegram, existing newsletters and the noticeboards students already pass, not a new app or list they have to opt into first.',
   },
   {
     title: 'The promise fits in one line',
@@ -420,7 +420,7 @@ export const whyItWorks: WhyItWorksPoint[] = [
   },
   {
     title: 'Organisers are supply and distribution at once',
-    body: 'A society that submits a listing also has a reason to share Radar with its own members — the same relationship does double duty.',
+    body: 'A society that submits a listing also has a reason to share Radar with its own members. The same relationship does double duty.',
   },
   {
     title: 'Low cost means we can repeat, not just launch once',
@@ -435,19 +435,19 @@ export type RiskRow = {
 
 export const risks: RiskRow[] = [
   {
-    risk: 'Society gatekeeping — some societies won’t promote something built by students outside their exco.',
+    risk: 'Society gatekeeping: some societies won’t promote something built by students outside their exco.',
     mitigation: 'No partnership claim, ever. We lead with a no-obligation submission form and start with societies we already have a personal connection to.',
   },
   {
-    risk: 'Thin catalogue at launch — an empty-looking list undermines trust on day one.',
+    risk: 'Thin catalogue at launch: an empty-looking list undermines trust on day one.',
     mitigation: 'Hand-source a couple of dozen credible listings from public organiser and faculty pages before launch week, and say plainly in outreach that the catalogue is still growing.',
   },
   {
-    risk: '"Another platform" fatigue — students are wary of one more place to check.',
+    risk: '"Another platform" fatigue: students are wary of one more place to check.',
     mitigation: 'Position Radar as a filter delivered inside channels they already use (Telegram, newsletters), not a destination they have to remember to visit.',
   },
   {
-    risk: 'Moderation and data-permission limits — we can’t scrape or republish content without permission.',
+    risk: 'Moderation and data-permission limits: we can’t scrape or republish content without permission.',
     mitigation: 'Only index public organiser pages, faculty pages and listings submitted with consent; keep source status visible on every listing.',
   },
 ];

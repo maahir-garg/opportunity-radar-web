@@ -2,7 +2,7 @@ import { SectionHeader } from '@/components/primitives/SectionHeader';
 import { personas } from '@/lib/content/campaign';
 import styles from './AudienceSection.module.css';
 
-/** "Who we are talking to" — primary and secondary personas. */
+/** "Who we are talking to": primary and secondary personas. */
 export function AudienceSection() {
   return (
     <div>

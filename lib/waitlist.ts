@@ -93,7 +93,7 @@ function isChannelOption(value: string): value is ChannelOption {
 /**
  * Pure validation shared by the client form and the API route. Accepts
  * `unknown` because it is the first thing to touch a parsed JSON body (or a
- * plain object built from form state) — nothing here is assumed to already
+ * plain object built from form state). Nothing here is assumed to already
  * be well-shaped.
  */
 export function validateWaitlist(input: unknown): WaitlistValidationResult {
@@ -105,7 +105,7 @@ export function validateWaitlist(input: unknown): WaitlistValidationResult {
 
   const data = input as Record<string, unknown>;
 
-  // Handle — the client always sends an already-normalised string (see
+  // Handle: the client always sends an already-normalised string (see
   // lib/handles.ts normalizeHandle), so we validate the shape rather than
   // silently rewriting whatever was sent.
   const handle = typeof data.handle === 'string' ? data.handle : '';
@@ -117,7 +117,7 @@ export function validateWaitlist(input: unknown): WaitlistValidationResult {
     errors.handle = 'This handle is already reserved. Try another.';
   }
 
-  // Email — shape only. Never reject a non-NUS domain.
+  // Email: shape only. Never reject a non-NUS domain.
   const email = typeof data.email === 'string' ? data.email.trim() : '';
   if (!email) {
     errors.email = 'Enter an email address so we can reach you.';
@@ -137,7 +137,7 @@ export function validateWaitlist(input: unknown): WaitlistValidationResult {
     errors.faculty = 'Select your faculty.';
   }
 
-  // Interests — 1 to 3 of the canonical categories.
+  // Interests: 1 to 3 of the canonical categories.
   const interestsRaw = Array.isArray(data.interests) ? data.interests : [];
   const interests = interestsRaw.filter(
     (candidate): candidate is CategoryId =>
@@ -149,7 +149,7 @@ export function validateWaitlist(input: unknown): WaitlistValidationResult {
     errors.interests = `Pick up to ${MAX_INTERESTS}. Deselect one to change your choice.`;
   }
 
-  // Channel — optional.
+  // Channel: optional.
   const channelRaw = typeof data.channel === 'string' ? data.channel : '';
   let channel: ChannelOption | undefined;
   if (channelRaw) {
@@ -160,14 +160,14 @@ export function validateWaitlist(input: unknown): WaitlistValidationResult {
     }
   }
 
-  // Note — optional, capped length.
+  // Note: optional, capped length.
   const noteRaw = typeof data.note === 'string' ? data.note : '';
   if (noteRaw.length > NOTE_MAX_LENGTH) {
     errors.note = `Keep this to ${NOTE_MAX_LENGTH} characters or fewer.`;
   }
   const note = noteRaw.trim() ? noteRaw.trim() : undefined;
 
-  // Consent — required.
+  // Consent: required.
   const consent = data.consent === true;
   if (!consent) {
     errors.consent = "Check the box to say we can contact you about the pilot.";

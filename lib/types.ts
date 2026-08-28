@@ -1,5 +1,5 @@
-// Mirrors data/mock-data.json exactly. Field names must match the JSON —
-// do not rename. See docs/BUILD-CONTRACT.md §5.
+// Mirrors data/mock-data.json exactly. Field names must match the JSON.
+// Do not rename. See docs/BUILD-CONTRACT.md §5.
 
 export type CategoryId =
   | 'career'

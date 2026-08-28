@@ -7,7 +7,7 @@ import styles from './PreviewSection.module.css';
 const POINTS = [
   {
     title: 'An explainable match',
-    body: 'Radar shows a percentage only next to a plain-language label and a "Why this matches" breakdown: what fits, what it does not know about you, and what could block you. It measures profile fit — never your chance of acceptance.',
+    body: 'Radar shows a percentage only next to a plain-language label and a "Why this matches" breakdown: what fits, what it does not know about you, and what could block you. It measures profile fit, never your chance of acceptance.',
   },
   {
     title: 'A 30-day view that admits what it does not know',
@@ -32,8 +32,8 @@ export function PreviewSection() {
               </div>
             ))}
             <p className={`type-small ${styles.notice}`}>
-              Demo content — every listing, review, organiser and date shown here is fictional and
-              used for design testing.
+              Sample content: every listing, review, organiser and date shown here is an example,
+              not a live opportunity.
             </p>
           </div>
           <ProductPreview className={styles.preview} />

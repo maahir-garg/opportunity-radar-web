@@ -5,7 +5,7 @@ export type NotListProps = {
   items: string[];
 };
 
-/** "What Radar is not" — a short, honest out-of-scope list. */
+/** "What Radar is not": a short, honest out-of-scope list. */
 export function NotList({ items }: NotListProps) {
   return (
     <ul className={styles.list}>

@@ -37,7 +37,7 @@ export function HandleField({ id, value, onChange, error }: HandleFieldProps) {
 
     // Both branches resolve via a timer callback (never a synchronous
     // setState in the effect body itself) so a fast typist never triggers
-    // cascading renders — the short-input case just resolves on the next tick.
+    // cascading renders. The short-input case just resolves on the next tick.
     const delay = value.length < HANDLE_MIN_LENGTH ? 0 : DEBOUNCE_MS;
     timeoutRef.current = setTimeout(() => {
       setStatus(value.length < HANDLE_MIN_LENGTH ? 'idle' : checkHandleAvailability(value));
@@ -116,7 +116,7 @@ export function HandleField({ id, value, onChange, error }: HandleFieldProps) {
         {status === 'taken' ? (
           <>
             <TriangleAlert size={14} aria-hidden="true" className={styles.statusIcon} />
-            {`@${value} is taken — try another`}
+            {`@${value} is taken, try another`}
           </>
         ) : null}
       </p>

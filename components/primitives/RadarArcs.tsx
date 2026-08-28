@@ -7,7 +7,7 @@ export type RadarArcsProps = {
 /**
  * Large decorative artwork echoing the logo: concentric signal arcs from one
  * origin, plus a sparse dot field. Flat strokes, no gradients. Purely
- * decorative — aria-hidden and pointer-events: none. It fills its positioned
+ * decorative, aria-hidden and pointer-events: none. It fills its positioned
  * ancestor; the section owner decides placement so it never sits under text.
  */
 export function RadarArcs({ className }: RadarArcsProps) {

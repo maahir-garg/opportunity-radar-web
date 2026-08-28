@@ -8,7 +8,7 @@ export function CampaignTimeline() {
   return (
     <div>
       <SectionHeader
-        overline="Implementation — schedule"
+        overline="Implementation: schedule"
         title="Six-week timeline"
         lead="Four weeks to prepare, one launch week, one sustain week. Each cell is a concrete artefact, not a placeholder."
       />
@@ -46,7 +46,11 @@ export function CampaignTimeline() {
                 </th>
                 {timelineChannelOrder.map((channel) => (
                   <td className="type-small" key={channel.id}>
-                    {row.cells[channel.id] ?? <span className={styles.empty}>—</span>}
+                    {row.cells[channel.id] ?? (
+                      <span className={styles.empty}>
+                        <VisuallyHidden>Nothing scheduled</VisuallyHidden>
+                      </span>
+                    )}
                   </td>
                 ))}
               </tr>

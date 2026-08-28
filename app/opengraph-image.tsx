@@ -69,7 +69,7 @@ export default function Image() {
             maxWidth: 920,
           }}
         >
-          Student-built for NUS students — not an official NUS service.
+          Student-built for NUS students. Not an official NUS service.
         </div>
       </div>
     ),

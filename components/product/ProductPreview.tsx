@@ -28,7 +28,7 @@ export type ProductPreviewProps = {
 
 /**
  * Marketing product imagery: three static screen compositions behind a tab
- * switcher. The tabs are the only interactive part — the screens themselves
+ * switcher. The tabs are the only interactive part. The screens themselves
  * are inert, because the working prototype lives elsewhere.
  */
 export function ProductPreview({ className }: ProductPreviewProps) {

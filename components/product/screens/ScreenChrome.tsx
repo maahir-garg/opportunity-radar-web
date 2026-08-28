@@ -19,7 +19,7 @@ const NAV = [
 /**
  * Shared chrome for the marketing screen compositions: a top bar, a scrollable
  * body and the four-destination bottom navigation. Everything here is static
- * markup — there are no controls inside the phone, so nothing looks tappable
+ * markup. There are no controls inside the phone, so nothing looks tappable
  * but dead.
  */
 export function Screen({ title, variant = 'root', withBottomNav = true, children }: ScreenProps) {

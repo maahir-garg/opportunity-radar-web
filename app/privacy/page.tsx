@@ -8,7 +8,7 @@ import { privacyIntro, privacySections, privacyContact, lastReviewed } from '@/l
 export const metadata: Metadata = {
   title: 'Privacy and data',
   description:
-    'What the Radar sign-up form asks for, why nothing is stored by this prototype site, and what we would never do with the details a student gives us.',
+    'What the Radar sign-up form asks for, why nothing is stored by this site, and what we would never do with the details a student gives us.',
 };
 
 export default function PrivacyPage() {

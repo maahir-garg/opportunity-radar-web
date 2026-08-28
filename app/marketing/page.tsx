@@ -16,7 +16,7 @@ import styles from './page.module.css';
 export const metadata: Metadata = {
   title: 'Launch campaign',
   description:
-    'The Milestone 11 marketing plan for the Radar pilot: six low-cost, non-disruptive channels, a real video shot list, sample assets and how we would measure it.',
+    'The marketing plan for the Radar pilot: six low-cost, non-disruptive channels, a real video shot list, sample assets and how we would measure it.',
 };
 
 const PAGE_SECTIONS = [

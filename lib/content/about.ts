@@ -1,14 +1,14 @@
 /**
  * All copy for /about.
  *
- * Written in our own words from design-system/01-PRODUCT-UX-SPEC.txt — not
+ * Written in our own words from design-system/01-PRODUCT-UX-SPEC.txt, not
  * copied verbatim. Still bound by docs/BUILD-CONTRACT.md §7: no fabricated
  * counts, no NUS partnership claim, no "AI-powered", no accuracy or
  * acceptance-likelihood promises.
  */
 
 export const aboutIntro = {
-  lead: 'Radar is the decision layer that sits above the places NUS opportunities already live — it does not replace application portals or organiser pages. It gathers internships, research, competitions, exchanges, grants and talks into one profile-aware list, explains why each one fits, and helps you act before the deadline.',
+  lead: 'Radar is the decision layer that sits above the places NUS opportunities already live. It does not replace application portals or organiser pages. It gathers internships, research, competitions, exchanges, grants and talks into one profile-aware list, explains why each one fits, and helps you act before the deadline.',
 } as const;
 
 export const productStory: { overline: string; title: string; paragraphs: string[] } = {
@@ -16,7 +16,7 @@ export const productStory: { overline: string; title: string; paragraphs: string
   title: 'A feed instead of six tabs',
   paragraphs: [
     'In our interviews, NUS students described finding opportunities through whatever channel happened to surface one: an email from a faculty office, a forwarded Telegram message, a society Instagram post, a professor mentioning something in passing. Nothing points at all of it, so a student either checks several places out of habit or relies on luck.',
-    'These are assumptions we tested in a small round of interviews, not settled facts — we treat them as hypotheses the prototype should help confirm or correct. What we heard consistently was that volume, not scarcity, is the problem: too many channels, too little context on any one item, and no single place to see what is actually closing soon.',
+    'These are assumptions we tested in a small round of interviews, not settled facts. We treat them as hypotheses the prototype should help confirm or correct. What we heard consistently was that volume, not scarcity, is the problem: too many channels, too little context on any one item, and no single place to see what is actually closing soon.',
     'Radar answers that by keeping one shared catalogue with one data model, ranking a short list against a student profile instead of showing everything, attaching the evidence needed to judge each item, and turning anything saved into a plan with a status and a deadline in view.',
   ],
 };
@@ -91,7 +91,7 @@ export const features: Feature[] = [
     icon: 'list-checks',
     title: 'Explainable match',
     description:
-      'Every match carries a plain-language label and a breakdown of what fits, what is unknown, and what might block eligibility — never a chance of acceptance.',
+      'Every match carries a plain-language label and a breakdown of what fits, what is unknown, and what might block eligibility, never a chance of acceptance.',
   },
   {
     id: 'F4',
@@ -112,7 +112,7 @@ export const features: Feature[] = [
     icon: 'message-circle',
     title: 'Ask Radar',
     description:
-      'A plain-language way to search inside Explore. It returns the same catalogue cards with reasons and sources — it never invents a deadline or a rule.',
+      'A plain-language way to search inside Explore. It returns the same catalogue cards with reasons and sources. It never invents a deadline or a rule.',
   },
 ];
 
@@ -128,20 +128,20 @@ export type TraceabilityRow = {
 
 export const traceabilityRows: TraceabilityRow[] = [
   {
-    goal: 'G1 — Discover',
+    goal: 'G1: Discover',
     features: 'F1, F2, F3, F6',
     surfaces: 'Onboarding, For You, Explore, Ask Radar',
     observe: 'A student finds one opportunity that suits them and can say why it appeared.',
   },
   {
-    goal: 'G2 — Decide',
+    goal: 'G2: Decide',
     features: 'F3, F4',
     surfaces: 'Opportunity detail, Why this matches, Reviews',
     observe:
       'A student can point to the source, the eligibility rules, the commitment and the deadline without help.',
   },
   {
-    goal: 'G3 — Act',
+    goal: 'G3: Act',
     features: 'F4, F5',
     surfaces: 'Detail, reminder setup, Plan, 30-day Radar',
     observe:
@@ -150,20 +150,20 @@ export const traceabilityRows: TraceabilityRow[] = [
 ];
 
 export const notList: string[] = [
-  'Host or process a complete application — every apply action leaves Radar for the official page.',
+  'Host or process a complete application: every apply action leaves Radar for the official page.',
   'Write, generate or edit a resume, essay or application answer.',
   'Estimate your chance of acceptance. A match score measures profile fit, never admission likelihood.',
   'Run an open social feed, follower graph or direct-messaging system.',
   'Publish a review before it has been through moderation.',
-  'Claim a live NUS data integration — every listing in this preview is fictional demo content, and any real pilot would need explicit source permission.',
+  'Claim a live NUS data integration: every listing in this preview is fictional demo content, and any real pilot would need explicit source permission.',
 ];
 
 export const assignmentContext: { overline: string; title: string; paragraphs: string[] } = {
-  overline: 'Assignment context',
+  overline: 'Where we are',
   title: 'What this site is, and is not',
   paragraphs: [
-    'This site is coursework for CS3216 Software Product Engineering for Digital Markets at the National University of Singapore. It is a marketing page, built for Assignment 1 to explain the product and collect interest — it is not the product itself.',
-    'The opportunity catalogue shown throughout the product preview on this site is fictional demo content, written to exercise the design system rather than represent real programmes or organisers.',
-    'The tap-through interactive prototype — the actual screens a student would use — is a separate deliverable built in a design tool. This site only shows static compositions of it.',
+    'Radar is a student-built project at the pre-launch stage. This site is where we explain the product and collect interest before the pilot opens; it is not the product itself.',
+    'The opportunities you see in the product preview are sample listings we wrote ourselves. They show how Radar presents a deadline, a source and a reason it matched you. None of them describes a real programme or organiser.',
+    'The tap-through interactive prototype, the actual screens a student would use, is a separate build made in a design tool. This site only shows static compositions of it.',
   ],
 } as const;

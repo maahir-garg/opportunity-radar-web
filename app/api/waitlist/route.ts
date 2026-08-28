@@ -1,11 +1,10 @@
-// Per the CS3216 Assignment 1 brief, Milestone 10's sign-up form is not
-// required to persist data — this route deliberately does not. It validates
-// the payload with the same lib/waitlist.ts logic the client uses, keeps a
-// module-scope array purely so a single running server instance can answer
-// "how many did we accept" while it's warm, and never writes that array
-// anywhere durable. It resets on every deploy / cold start / restart, and
-// this comment is the only place its non-persistence is asserted — do not
-// wire it to a database.
+// This sign-up form does not need to persist data, so this route
+// deliberately does not. It validates the payload with the same
+// lib/waitlist.ts logic the client uses, keeps a module-scope array purely
+// so a single running server instance can answer "how many did we accept"
+// while it's warm, and never writes that array anywhere durable. It resets
+// on every deploy / cold start / restart, and this comment is the only
+// place its non-persistence is asserted: do not wire it to a database.
 
 import { validateWaitlist, type WaitlistSubmission } from '@/lib/waitlist';
 
@@ -22,7 +21,7 @@ export async function POST(request: Request) {
     return Response.json(
       {
         ok: false,
-        errors: { form: 'We could not read that submission — please try again.' },
+        errors: { form: 'We could not read that submission. Please try again.' },
       },
       { status: 400 }
     );

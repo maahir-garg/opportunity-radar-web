@@ -13,7 +13,7 @@ const manrope = Manrope({
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://opportunity-radar.vercel.app';
 
-const title = 'NUS Opportunity Radar — Find your signal.';
+const title = 'NUS Opportunity Radar: Find your signal.';
 const description =
   'Radar brings NUS internships, research, competitions, exchanges, grants and talks into one place, shows you a short list that fits your year and interests, explains why each one matched, and turns the ones you save into a deadline plan.';
 

@@ -19,7 +19,7 @@ export type InterestPickerProps = {
 /**
  * The eight canonical categories as a real checkbox group. At the maximum,
  * the remaining boxes stay enabled (never `disabled`, which would drop them
- * from the tab order) — picking a fourth is simply refused with a polite
+ * from the tab order). Picking a fourth is simply refused with a polite
  * announcement instead.
  */
 export function InterestPicker({ id, selected, onChange, error }: InterestPickerProps) {

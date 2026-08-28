@@ -8,7 +8,7 @@ export type PhoneFrameProps = {
 
 /**
  * A 390px-reference device frame for marketing imagery. The content inside is
- * a static composition, not a working app — it is inert by design.
+ * a static composition, not a working app. It is inert by design.
  */
 export function PhoneFrame({ children, className }: PhoneFrameProps) {
   const classNames = [styles.frame, className ?? ''].filter(Boolean).join(' ');

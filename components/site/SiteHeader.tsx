@@ -37,7 +37,7 @@ export function SiteHeader() {
   return (
     <header className={styles.header}>
       <div className={styles.bar}>
-        <Link href="/" className={styles.brand} aria-label="Radar — home">
+        <Link href="/" className={styles.brand} aria-label="Radar, home">
           <RadarMark />
           <span aria-hidden="true" className={`type-h3 ${styles.brandLabel}`}>
             Radar

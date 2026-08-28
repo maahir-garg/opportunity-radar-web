@@ -32,8 +32,8 @@ const SOURCE_LABEL: Record<string, string> = {
 
 /**
  * The one canonical opportunity card. Both variants render the same facts in
- * the same order — deadline, title, organiser and source, fit, metadata,
- * rating — so nothing changes between surfaces.
+ * the same order: deadline, title, organiser and source, fit, metadata,
+ * rating, so nothing changes between surfaces.
  */
 export function OpportunityCard({
   opportunity,
