@@ -2,6 +2,7 @@
 
 import { useEffect, useId, useRef, useState } from 'react';
 import Link from 'next/link';
+import { AnchorLink } from './AnchorLink';
 import { Menu, X } from 'lucide-react';
 import { RadarMark } from '@/components/primitives/RadarMark';
 import { Button } from '@/components/primitives/Button';
@@ -48,9 +49,9 @@ export function SiteHeader() {
           <ul className={styles.navList}>
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className={`type-label ${styles.navLink}`}>
+                <AnchorLink href={link.href} className={`type-label ${styles.navLink}`}>
                   {link.label}
-                </Link>
+                </AnchorLink>
               </li>
             ))}
           </ul>
@@ -83,13 +84,13 @@ export function SiteHeader() {
           <ul className={styles.disclosureList}>
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
-                <Link
+                <AnchorLink
                   href={link.href}
                   className={`type-label ${styles.disclosureLink}`}
-                  onClick={() => setIsMenuOpen(false)}
+                  onNavigate={() => setIsMenuOpen(false)}
                 >
                   {link.label}
-                </Link>
+                </AnchorLink>
               </li>
             ))}
           </ul>
