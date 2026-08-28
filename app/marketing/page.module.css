@@ -1,0 +1,30 @@
+.pageNav {
+  margin-block-start: var(--radar-space-10);
+  padding-block-start: var(--radar-space-6);
+  border-block-start: 1px solid var(--radar-color-border);
+}
+
+.pageNavList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--radar-space-2);
+}
+
+.pageNavLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--radar-size-tap-minimum);
+  padding-inline: var(--radar-space-3);
+  border: 1px solid var(--radar-color-border);
+  border-radius: var(--radar-radius-full);
+  background: var(--radar-color-surface);
+  color: var(--radar-color-text-secondary);
+  transition:
+    border-color var(--radar-duration-base) var(--radar-ease-standard),
+    color var(--radar-duration-base) var(--radar-ease-standard);
+}
+
+.pageNavLink:hover {
+  border-color: var(--radar-color-border-strong);
+  color: var(--radar-color-text-primary);
+}

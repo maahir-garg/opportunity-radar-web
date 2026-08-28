@@ -1,0 +1,5 @@
+.explanation {
+  color: var(--radar-color-text-secondary);
+  padding-block-start: var(--radar-space-3);
+  border-block-start: 1px solid var(--radar-color-border);
+}

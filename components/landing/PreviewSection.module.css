@@ -1,0 +1,55 @@
+.layout {
+  display: grid;
+  gap: var(--radar-space-10);
+  margin-block-start: var(--radar-space-8);
+  align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 26rem);
+    gap: var(--radar-space-16);
+  }
+}
+
+.points {
+  display: flex;
+  flex-direction: column;
+  gap: var(--radar-space-8);
+}
+
+.point {
+  display: flex;
+  flex-direction: column;
+  gap: var(--radar-space-2);
+  padding-inline-start: var(--radar-space-4);
+  border-inline-start: 2px solid var(--radar-color-signal);
+}
+
+.pointTitle {
+  color: var(--radar-color-text-primary);
+}
+
+.pointBody {
+  color: var(--radar-color-text-secondary);
+  max-width: 36rem;
+}
+
+.notice {
+  color: var(--radar-color-text-secondary);
+  padding: var(--radar-space-3);
+  background: var(--radar-color-surface-subdued);
+  border-radius: var(--radar-radius-medium);
+  max-width: 36rem;
+}
+
+.preview {
+  position: sticky;
+  inset-block-start: var(--radar-space-20);
+}
+
+@media (max-width: 1023px) {
+  .preview {
+    position: static;
+  }
+}

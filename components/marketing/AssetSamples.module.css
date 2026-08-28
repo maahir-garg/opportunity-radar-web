@@ -1,0 +1,115 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: var(--radar-space-6);
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--radar-space-3);
+  padding: var(--radar-space-6);
+  background: var(--radar-color-surface);
+  border: 1px solid var(--radar-color-border);
+  border-radius: var(--radar-radius-large);
+}
+
+.card > .telegramFrame,
+.card > .instagramFrame,
+.card > .emailFrame {
+  display: flex;
+  flex-direction: column;
+  gap: var(--radar-space-2);
+  padding: var(--radar-space-4);
+  background: var(--radar-color-surface-quiet);
+  border: 1px solid var(--radar-color-border);
+  border-radius: var(--radar-radius-medium);
+}
+
+.telegramChannel {
+  color: var(--radar-color-signal-text);
+}
+
+.telegramBody,
+.emailBody {
+  white-space: pre-line;
+  color: var(--radar-color-text-body);
+}
+
+.instagramFrame p:last-child {
+  color: var(--radar-color-text-secondary);
+}
+
+.emailLabel {
+  color: var(--radar-color-text-secondary);
+  font-weight: var(--radar-font-weight-semibold);
+}
+
+.emailBody {
+  margin-top: var(--radar-space-2);
+  padding-top: var(--radar-space-3);
+  border-top: 1px solid var(--radar-color-border);
+}
+
+.poster {
+  align-items: center;
+}
+
+.posterFrame {
+  width: 100%;
+  max-width: 70%;
+  aspect-ratio: 3 / 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--radar-space-3);
+  padding: var(--radar-space-6);
+  background: var(--radar-color-canvas);
+  border: 1px solid var(--radar-color-border);
+  border-radius: var(--radar-radius-medium);
+  margin-inline: auto;
+}
+
+.posterHeadline {
+  color: var(--radar-color-text-primary);
+}
+
+.posterBody {
+  color: var(--radar-color-text-secondary);
+}
+
+.posterQr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--radar-space-2);
+  color: var(--radar-color-text-secondary);
+}
+
+.qrSvg {
+  width: var(--radar-space-20);
+  height: var(--radar-space-20);
+  color: var(--radar-color-text-primary);
+  background: var(--radar-color-surface);
+  border: 1px solid var(--radar-color-border-strong);
+  padding: var(--radar-space-1);
+}
+
+.posterFooter {
+  color: var(--radar-color-text-secondary);
+}
+
+.illustrative {
+  color: var(--radar-color-text-secondary);
+  padding: var(--radar-space-3);
+  background: var(--radar-color-surface-subdued);
+  border-radius: var(--radar-radius-medium);
+  max-width: 44rem;
+  margin-block-start: var(--radar-space-4);
+}

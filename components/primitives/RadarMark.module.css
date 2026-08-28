@@ -1,0 +1,15 @@
+.mark {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--radar-space-2);
+  color: inherit;
+}
+
+.svg {
+  flex-shrink: 0;
+}
+
+.wordmark {
+  color: inherit;
+  line-height: 1;
+}

@@ -1,0 +1,19 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--radar-space-1);
+  padding-block-end: var(--radar-space-4);
+  border-block-end: 1px solid var(--radar-color-border);
+}
+
+.overline {
+  color: var(--radar-color-text-secondary);
+}
+
+.title {
+  color: var(--radar-color-text-primary);
+}
+
+.organiser {
+  color: var(--radar-color-text-secondary);
+}

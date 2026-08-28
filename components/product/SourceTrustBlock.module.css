@@ -1,0 +1,45 @@
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--radar-space-1);
+  padding: var(--radar-space-3);
+  border: 1px solid var(--radar-color-border);
+  border-radius: var(--radar-radius-medium);
+  background: var(--radar-color-surface-quiet);
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: var(--radar-space-2);
+}
+
+.official {
+  color: var(--radar-color-match-text);
+}
+
+.community {
+  color: var(--radar-color-text-secondary);
+}
+
+.review {
+  color: var(--radar-color-warning-text);
+}
+
+.detail {
+  color: var(--radar-color-text-secondary);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--radar-space-4);
+  margin-block-start: var(--radar-space-1);
+  color: var(--radar-color-text-link);
+}
+
+.action {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--radar-space-1);
+}

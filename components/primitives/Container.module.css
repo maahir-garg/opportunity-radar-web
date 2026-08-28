@@ -1,0 +1,19 @@
+.container {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--radar-size-mobile-gutter);
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-inline: var(--radar-space-6);
+  }
+}
+
+.landing {
+  max-width: var(--radar-size-content-landing-max);
+}
+
+.text {
+  max-width: 68ch;
+}

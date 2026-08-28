@@ -1,0 +1,48 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: var(--radar-space-4);
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--radar-space-3);
+  padding: var(--radar-space-6);
+  background: var(--radar-color-surface);
+  border: 1px solid var(--radar-color-border);
+  border-radius: var(--radar-radius-large);
+}
+
+.riskHead {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--radar-space-3);
+}
+
+.icon {
+  width: var(--radar-size-icon-default);
+  height: var(--radar-size-icon-default);
+  color: var(--radar-color-text-secondary);
+  flex-shrink: 0;
+  margin-top: var(--radar-space-1);
+}
+
+.mitigation {
+  display: flex;
+  flex-direction: column;
+  gap: var(--radar-space-1);
+  padding-top: var(--radar-space-3);
+  border-top: 1px solid var(--radar-color-border);
+}
+
+.mitigationLabel {
+  color: var(--radar-color-text-secondary);
+  letter-spacing: 0.04em;
+}

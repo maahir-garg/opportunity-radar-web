@@ -1,0 +1,40 @@
+.context {
+  color: var(--radar-color-text-secondary);
+}
+
+.forecastCard {
+  display: flex;
+  align-items: center;
+  gap: var(--radar-space-3);
+  padding: var(--radar-space-3) var(--radar-space-4);
+  background: var(--radar-color-surface);
+  border: 1px solid var(--radar-color-border);
+  border-inline-start: 3px solid var(--radar-color-signal);
+  border-radius: var(--radar-radius-medium);
+  color: var(--radar-color-text-primary);
+}
+
+.forecastText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--radar-space-1);
+  margin-inline-end: auto;
+}
+
+.forecastTitle {
+  color: var(--radar-color-text-primary);
+}
+
+.forecastMeta {
+  color: var(--radar-color-text-secondary);
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--radar-space-3);
+}
+
+.groupTitle {
+  color: var(--radar-color-text-secondary);
+}

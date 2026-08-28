@@ -1,0 +1,30 @@
+.badge {
+  display: flex;
+  align-items: center;
+  gap: var(--radar-space-2);
+  color: var(--radar-color-text-secondary);
+}
+
+.icon {
+  flex: none;
+}
+
+.normal {
+  color: var(--radar-color-text-secondary);
+}
+
+.warning {
+  color: var(--radar-color-warning-text);
+}
+
+.critical {
+  color: var(--radar-color-error-text);
+}
+
+.closed {
+  color: var(--radar-color-text-secondary);
+}
+
+.upcoming {
+  color: var(--radar-color-text-secondary);
+}

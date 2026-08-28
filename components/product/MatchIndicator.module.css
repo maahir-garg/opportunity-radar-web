@@ -1,0 +1,32 @@
+.indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--radar-space-2);
+  border-radius: var(--radar-radius-full);
+}
+
+.default {
+  padding: var(--radar-space-1) var(--radar-space-3);
+}
+
+.compact {
+  padding: var(--radar-space-1) var(--radar-space-2);
+}
+
+.matched {
+  background: var(--radar-color-match-surface);
+  color: var(--radar-color-match-text);
+}
+
+.blocked {
+  background: var(--radar-color-warning-surface);
+  color: var(--radar-color-warning-text);
+}
+
+.score {
+  font-weight: var(--radar-font-weight-bold);
+}
+
+.dot {
+  opacity: 0.6;
+}

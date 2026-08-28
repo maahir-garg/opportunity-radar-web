@@ -1,0 +1,51 @@
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--radar-space-1);
+  padding-block: var(--radar-space-1);
+  padding-inline: var(--radar-space-3);
+  border-radius: var(--radar-radius-full);
+  font-size: var(--radar-font-size-small);
+  line-height: var(--radar-line-height-small);
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--radar-size-icon-small);
+  height: var(--radar-size-icon-small);
+  flex-shrink: 0;
+}
+
+.neutral {
+  background: var(--radar-color-surface-subdued);
+  color: var(--radar-color-text-secondary);
+}
+
+.match {
+  background: var(--radar-color-match-surface);
+  color: var(--radar-color-match-text);
+}
+
+.warning {
+  background: var(--radar-color-warning-surface);
+  color: var(--radar-color-warning-text);
+}
+
+.info {
+  background: var(--radar-color-info-surface);
+  color: var(--radar-color-info-text);
+}
+
+.signal {
+  background: var(--radar-color-surface-accent);
+  color: var(--radar-color-signal-text);
+}
+
+.error {
+  background: var(--radar-color-error-surface);
+  color: var(--radar-color-error-text);
+}

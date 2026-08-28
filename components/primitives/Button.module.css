@@ -1,0 +1,105 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--radar-space-2);
+  border-radius: var(--radar-radius-medium);
+  border: 1px solid transparent;
+  font-family: var(--radar-font-sans);
+  font-size: var(--radar-font-size-small);
+  line-height: var(--radar-line-height-small);
+  font-weight: 650;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  height: var(--radar-size-control-default);
+  padding-inline: var(--radar-space-5);
+  transition:
+    background-color var(--radar-duration-base) var(--radar-ease-standard),
+    border-color var(--radar-duration-base) var(--radar-ease-standard),
+    color var(--radar-duration-base) var(--radar-ease-standard),
+    opacity var(--radar-duration-base) var(--radar-ease-standard);
+}
+
+.button:focus-visible {
+  outline: 3px solid var(--radar-color-focus);
+  outline-offset: var(--radar-focus-offset);
+}
+
+.large {
+  height: var(--radar-size-control-large);
+  padding-inline: var(--radar-space-6);
+}
+
+.compact {
+  height: var(--radar-size-control-compact);
+  padding-inline: var(--radar-space-4);
+}
+
+.primary {
+  background: var(--radar-color-action-primary);
+  color: var(--radar-color-action-on-primary);
+}
+
+.primary:hover {
+  background: var(--radar-color-action-primary-hover);
+}
+
+.secondary {
+  background: var(--radar-color-surface);
+  color: var(--radar-color-text-primary);
+  border-color: var(--radar-color-border);
+}
+
+.secondary:hover {
+  background: var(--radar-color-surface-subdued);
+}
+
+.tertiary {
+  background: transparent;
+  color: var(--radar-color-text-primary);
+  padding-inline: var(--radar-space-2);
+}
+
+.tertiary:hover {
+  text-decoration: underline;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.button:disabled,
+.button[aria-disabled='true'] {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.button[aria-disabled='true'] {
+  pointer-events: none;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--radar-size-icon-default);
+  height: var(--radar-size-icon-default);
+  flex-shrink: 0;
+}
+
+.spinner {
+  width: var(--radar-size-icon-small);
+  height: var(--radar-size-icon-small);
+  flex-shrink: 0;
+  border-radius: var(--radar-radius-full);
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  animation: radar-button-spin var(--radar-duration-slow) linear infinite;
+}
+
+@keyframes radar-button-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

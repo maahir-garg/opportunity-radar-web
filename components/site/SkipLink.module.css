@@ -1,0 +1,22 @@
+.skipLink {
+  position: absolute;
+  top: var(--radar-space-2);
+  left: var(--radar-space-2);
+  z-index: var(--radar-layer-toast);
+  transform: translateY(-200%);
+  background: var(--radar-color-action-primary);
+  color: var(--radar-color-action-on-primary);
+  padding-block: var(--radar-space-3);
+  padding-inline: var(--radar-space-4);
+  border-radius: var(--radar-radius-small);
+  font-size: var(--radar-font-size-small);
+  line-height: var(--radar-line-height-small);
+  font-weight: 650;
+  transition: transform var(--radar-duration-base) var(--radar-ease-standard);
+}
+
+.skipLink:focus-visible {
+  transform: translateY(0);
+  outline: 3px solid var(--radar-color-focus);
+  outline-offset: var(--radar-focus-offset);
+}

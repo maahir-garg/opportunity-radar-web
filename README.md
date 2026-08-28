@@ -1,36 +1,108 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NUS Opportunity Radar — marketing site
 
-## Getting Started
+The public marketing site for **NUS Opportunity Radar** (short name: **Radar**), a
+student-built concept that helps NUS students find opportunities before they close.
 
-First, run the development server:
+Built for **CS3216 Assignment 1**:
+
+| Milestone | Where it lives |
+|---|---|
+| **Milestone 10** — publicly accessible landing page with a sign-up form | [`/`](app/page.tsx) — hero, product preview, goals, trust section, FAQ, and the waitlist form at `#waitlist` |
+| **Milestone 11** — small marketing campaign | [`/marketing`](app/marketing/page.tsx) — audience, six channels, video shot list, sample assets, six-week timeline, measurement, risks |
+| Supporting context | [`/about`](app/about/page.tsx) — goals, features, requirement traceability · [`/privacy`](app/privacy/page.tsx) — what the form does and does not do |
+
+> Radar is student-built for NUS students — not an official NUS service. Every
+> listing, organiser, review and date shown in the product preview is fictional
+> demo content used for design testing.
+
+## Running it
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open <http://localhost:3000>.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build   # production build
+npm run start   # serve the production build
+npm run lint    # eslint
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Node 18.18+ is required (developed on Node 26, Next.js 16).
 
-## Learn More
+## Deploying to Vercel
 
-To learn more about Next.js, take a look at the following resources:
+The repository is a stock Next.js App Router project, so Vercel needs no
+configuration beyond the defaults:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Push this folder to a Git repository.
+2. In Vercel, **Add New → Project**, import the repository, and keep the detected
+   framework preset (**Next.js**). No build or output overrides are needed.
+3. Optionally set `NEXT_PUBLIC_SITE_URL` to the deployed origin (e.g.
+   `https://opportunity-radar.vercel.app`) so canonical URLs, the sitemap and the
+   Open Graph image resolve against the real domain.
+4. Deploy, and hand the resulting URL in for Milestone 10.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+There is no database, no environment secret and no external API, so a preview
+deployment is fully functional.
 
-## Deploy on Vercel
+## The sign-up form
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The assignment states the form "doesn't have to actually save any data", and this
+one deliberately does not. `POST /api/waitlist` validates the submission with the
+same [`validateWaitlist`](lib/waitlist.ts) function the client uses, returns a
+success or a field-level error map, and **persists nothing** — no database, no
+mailing-list provider, no analytics. `/privacy` says so in plain language.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The form does implement the two tactics the course suggests for a pre-launch
+landing page: a stated scarcity ("the first pilot opens to 100 students" — our own
+plan, never a fabricated count of people who have already joined) and a
+**reserved handle**, checked against a local reserved list as you type.
+
+## How it is built
+
+- **Next.js 16** (App Router, Turbopack) + **React 19** + **TypeScript** (strict).
+- **CSS Modules** only. Every colour, space, radius, type step, shadow, duration
+  and easing comes from [`app/radar-tokens.css`](app/radar-tokens.css) — the web
+  translation of the design system's token file. No raw hex or arbitrary spacing
+  appears anywhere else in the codebase.
+- **lucide-react** for icons, **Manrope** via `next/font/google`.
+- No CSS framework, no UI kit, no form library, no animation library.
+
+```
+app/                  routes: /, /marketing, /about, /privacy, /api/waitlist
+components/
+  primitives/         Button, Container, Section, SectionHeader, Chip, RadarMark…
+  site/               header, footer, skip link
+  landing/            the landing page sections
+  product/            the product-preview components and the three phone screens
+  marketing/          the campaign page sections
+  about/              the about page sections
+  waitlist/           the sign-up form, handle field, interest picker, success panel
+lib/                  types, mock data access, SGT date formatting, validation
+data/mock-data.json   the fictional demo catalogue
+design-system/        the source design system this site implements
+docs/BUILD-CONTRACT.md the build rules every part of this site follows
+```
+
+### Deterministic dates
+
+The preview is pinned to a prototype "today" of **28 Aug 2026** (from
+`data/mock-data.json`) and every date is formatted in `Asia/Singapore`, so the
+site renders identically on any machine and in any timezone — deadlines never
+drift and screenshots stay stable.
+
+### Accessibility
+
+One `<main>` and one `<h1>` per page, a skip link, a keyboard-operable tab
+switcher and disclosure menu, visible focus rings from the design tokens, 44px
+touch targets, labelled form fields with an error summary, polite live regions for
+form and availability feedback, and state that is never signalled by colour alone.
+
+## Credits
+
+Design system and product specification: `design-system/`. This site implements
+that system; it does not restate the interactive prototype, which is a separate
+Assignment 1 deliverable.
