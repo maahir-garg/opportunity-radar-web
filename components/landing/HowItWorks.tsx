@@ -1,6 +1,7 @@
 import { ListChecks, SlidersHorizontal, Sparkles } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { Container } from '@/components/primitives/Container';
+import { FeatureCard } from '@/components/primitives/FeatureCard';
 import { Section } from '@/components/primitives/Section';
 import { SectionHeader } from '@/components/primitives/SectionHeader';
 import styles from './HowItWorks.module.css';
@@ -34,14 +35,13 @@ export function HowItWorks() {
         <ol className={styles.steps}>
           {STEPS.map((step, index) => (
             <li key={step.title} className={styles.step}>
-              <p className={`type-caption ${styles.number} tabular`}>
-                Step {index + 1}
-              </p>
-              <span className={styles.iconWrap} aria-hidden="true">
-                <step.Icon size={20} strokeWidth={1.75} />
-              </span>
-              <h3 className={`type-h3 ${styles.title}`}>{step.title}</h3>
-              <p className={`type-body ${styles.body}`}>{step.body}</p>
+              <FeatureCard
+                tone="plain"
+                label={`Step ${index + 1}`}
+                icon={<step.Icon size={20} strokeWidth={1.75} />}
+                title={step.title}
+                description={step.body}
+              />
             </li>
           ))}
         </ol>

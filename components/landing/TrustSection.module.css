@@ -22,8 +22,21 @@
 .item {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: var(--radar-space-2);
+}
+
+.heading {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--radar-space-3);
+}
+
+/*
+ * Optically centre the icon tile against the title's first line, so a title
+ * that wraps to two lines does not drag the icon down with it.
+ */
+.iconWrap {
+  margin-block-start: calc((var(--radar-line-height-heading-3) - var(--radar-space-10)) / 2);
 }
 
 .iconWrap {
@@ -35,7 +48,7 @@
   border-radius: var(--radar-radius-medium);
   border: 1px solid var(--radar-color-focus);
   color: var(--radar-color-signal);
-  margin-block-end: var(--radar-space-1);
+  flex: none;
 }
 
 .title {

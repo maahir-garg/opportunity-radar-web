@@ -7,15 +7,15 @@ import styles from './InterviewQuotes.module.css';
 const QUOTES = [
   {
     quote: 'Talk quality is hard to gauge upfront. There is no verification system.',
-    attribution: 'NUS undergraduate · interview 1',
+    attribution: 'NUS Undergraduate · Interview 1',
   },
   {
     quote: 'Everyone discovers and applies through Telegram, which is fragmented.',
-    attribution: 'NUS undergraduate · interview 2',
+    attribution: 'NUS Undergraduate · Interview 2',
   },
   {
     quote: 'There are not enough NUS events on the centralised platforms we already use.',
-    attribution: 'NUS undergraduate · interview 3',
+    attribution: 'NUS Undergraduate · Interview 3',
   },
 ] as const;
 

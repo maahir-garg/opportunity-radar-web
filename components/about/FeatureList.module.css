@@ -1,58 +1,23 @@
 .grid {
   display: grid;
-  grid-template-columns: 1fr;
   gap: var(--radar-space-4);
+  margin-block-start: var(--radar-space-8);
 }
 
 @media (min-width: 768px) {
   .grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (min-width: 1024px) {
   .grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
-.card {
-  display: flex;
-  flex-direction: column;
-  gap: var(--radar-space-2);
-  padding: var(--radar-space-5);
-  background: var(--radar-color-surface);
-  border: 1px solid var(--radar-color-border);
-  border-radius: var(--radar-radius-large);
-}
-
-.iconWrap {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: var(--radar-space-8);
-  height: var(--radar-space-8);
-  border-radius: var(--radar-radius-small);
-  background: var(--radar-color-surface-subdued);
-  color: var(--radar-color-text-primary);
-  margin-bottom: var(--radar-space-1);
-}
-
-.code {
-  color: var(--radar-color-signal-text);
-  letter-spacing: 0.06em;
-}
-
-.title {
-  color: var(--radar-color-text-primary);
-}
-
-.description {
-  color: var(--radar-color-text-secondary);
-}
-
 .note {
-  margin-top: var(--radar-space-6);
+  margin-block-start: var(--radar-space-6);
   color: var(--radar-color-text-secondary);
-  max-width: 68ch;
+  max-width: 44rem;
 }

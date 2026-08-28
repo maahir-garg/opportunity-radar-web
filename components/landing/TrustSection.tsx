@@ -40,10 +40,12 @@ export function TrustSection() {
         <ul className={styles.grid}>
           {ITEMS.map((item) => (
             <li key={item.title} className={styles.item}>
-              <span className={styles.iconWrap} aria-hidden="true">
-                <item.Icon size={20} strokeWidth={1.75} />
-              </span>
-              <h3 className={`type-h3 ${styles.title}`}>{item.title}</h3>
+              <div className={styles.heading}>
+                <span className={styles.iconWrap} aria-hidden="true">
+                  <item.Icon size={20} strokeWidth={1.75} />
+                </span>
+                <h3 className={`type-h3 ${styles.title}`}>{item.title}</h3>
+              </div>
               <p className={`type-body ${styles.body}`}>{item.body}</p>
             </li>
           ))}

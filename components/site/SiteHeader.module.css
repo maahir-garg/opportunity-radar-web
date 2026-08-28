@@ -102,25 +102,109 @@
   height: var(--radar-size-icon-navigation);
 }
 
-.disclosure {
-  border-top: 1px solid var(--radar-color-border);
-  background: var(--radar-color-surface);
+/* Mobile menu: a drawer that slides in from the inline-end edge. */
+
+.scrim {
+  position: fixed;
+  inset: 0;
+  z-index: var(--radar-layer-navigation);
+  background: var(--radar-navy-950);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--radar-duration-slow) var(--radar-ease-standard);
+}
+
+.scrimOpen {
+  opacity: 0.4;
+  pointer-events: auto;
 }
 
 @media (min-width: 768px) {
-  .disclosure {
+  .scrim {
     display: none;
   }
 }
 
-.disclosureList {
+.drawer {
+  position: fixed;
+  inset-block: 0;
+  inset-inline-end: 0;
+  z-index: var(--radar-layer-sheet);
   display: flex;
   flex-direction: column;
-  padding: var(--radar-space-2) var(--radar-size-mobile-gutter) var(--radar-space-4);
+  gap: var(--radar-space-6);
+  width: min(20rem, 86vw);
+  padding: var(--radar-space-5) var(--radar-space-5) var(--radar-space-8);
+  background: var(--radar-color-surface);
+  border-inline-start: 1px solid var(--radar-color-border);
+  box-shadow: var(--radar-shadow-level-2);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  /*
+   * Parked off-screen rather than hidden with visibility, which does not
+   * transition reliably. `inert` keeps it out of the tab order and the
+   * accessibility tree while it is closed.
+   */
+  transform: translateX(100%);
+  pointer-events: none;
+  transition: transform var(--radar-duration-slow) var(--radar-ease-standard);
 }
 
-.disclosureLink {
-  display: block;
+.drawerOpen {
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+@media (min-width: 768px) {
+  .drawer {
+    display: none;
+  }
+}
+
+.drawerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--radar-space-4);
+}
+
+.drawerTitle {
+  color: var(--radar-color-text-secondary);
+}
+
+.drawerClose {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--radar-size-tap-minimum);
+  height: var(--radar-size-tap-minimum);
+  margin-inline-end: calc(var(--radar-space-2) * -1);
+  border-radius: var(--radar-radius-small);
+  color: var(--radar-color-text-primary);
+}
+
+.drawerList {
+  display: flex;
+  flex-direction: column;
+}
+
+.drawerLink {
+  display: flex;
+  align-items: center;
+  min-height: var(--radar-size-tap-minimum);
   padding-block: var(--radar-space-3);
-  color: var(--radar-color-text-body);
+  border-block-end: 1px solid var(--radar-color-border);
+  color: var(--radar-color-text-primary);
+}
+
+.drawerFooter {
+  margin-block-start: auto;
+}
+
+/* The header CTA is duplicated inside the drawer on phones, so hide the bar
+   copy there and give the menu button the room instead. */
+@media (max-width: 519px) {
+  .headerCta {
+    display: none;
+  }
 }

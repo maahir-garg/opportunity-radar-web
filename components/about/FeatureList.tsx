@@ -1,4 +1,5 @@
 import { UserCog, Search, ListChecks, ClipboardList, CalendarClock, MessageCircle } from 'lucide-react';
+import { FeatureCard } from '@/components/primitives/FeatureCard';
 import type { Feature, FeatureIcon } from '@/lib/content/about';
 import styles from './FeatureList.module.css';
 
@@ -23,13 +24,13 @@ export function FeatureList({ features, note }: FeatureListProps) {
         {features.map((feature) => {
           const Icon = ICONS[feature.icon];
           return (
-            <li className={styles.card} key={feature.id}>
-              <span className={styles.iconWrap} aria-hidden="true">
-                <Icon size={20} strokeWidth={1.75} />
-              </span>
-              <p className={`type-caption ${styles.code}`}>{feature.id}</p>
-              <h3 className={`type-h3 ${styles.title}`}>{feature.title}</h3>
-              <p className={`type-small ${styles.description}`}>{feature.description}</p>
+            <li key={feature.id}>
+              <FeatureCard
+                label={feature.label}
+                icon={<Icon size={20} strokeWidth={1.75} />}
+                title={feature.title}
+                description={feature.description}
+              />
             </li>
           );
         })}

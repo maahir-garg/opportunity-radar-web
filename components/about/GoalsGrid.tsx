@@ -1,4 +1,5 @@
 import { Compass, ShieldCheck, CalendarCheck } from 'lucide-react';
+import { FeatureCard } from '@/components/primitives/FeatureCard';
 import type { Goal, GoalIcon } from '@/lib/content/about';
 import styles from './GoalsGrid.module.css';
 
@@ -18,13 +19,13 @@ export function GoalsGrid({ goals }: GoalsGridProps) {
       {goals.map((goal) => {
         const Icon = ICONS[goal.icon];
         return (
-          <li className={styles.card} key={goal.id}>
-            <span className={styles.iconWrap} aria-hidden="true">
-              <Icon size={24} strokeWidth={1.75} />
-            </span>
-            <p className={`type-caption ${styles.code}`}>{goal.id}</p>
-            <h3 className={`type-h3 ${styles.title}`}>{goal.title}</h3>
-            <p className={`type-body ${styles.description}`}>{goal.description}</p>
+          <li key={goal.id}>
+            <FeatureCard
+              label={goal.label}
+              icon={<Icon size={20} strokeWidth={1.75} />}
+              title={goal.title}
+              description={goal.description}
+            />
           </li>
         );
       })}

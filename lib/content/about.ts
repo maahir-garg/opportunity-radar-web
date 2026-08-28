@@ -26,6 +26,8 @@ export type GoalIcon = 'compass' | 'shield-check' | 'calendar-check';
 
 export type Goal = {
   id: GoalId;
+  /** Shown to readers. The id stays internal, for keys and traceability. */
+  label: string;
   icon: GoalIcon;
   title: string;
   description: string;
@@ -34,6 +36,7 @@ export type Goal = {
 export const goals: Goal[] = [
   {
     id: 'G1',
+    label: 'Goal 1',
     icon: 'compass',
     title: 'Discover relevant opportunities quickly',
     description:
@@ -41,6 +44,7 @@ export const goals: Goal[] = [
   },
   {
     id: 'G2',
+    label: 'Goal 2',
     icon: 'shield-check',
     title: 'Decide with confidence',
     description:
@@ -48,6 +52,7 @@ export const goals: Goal[] = [
   },
   {
     id: 'G3',
+    label: 'Goal 3',
     icon: 'calendar-check',
     title: 'Act before the deadline',
     description:
@@ -66,6 +71,8 @@ export type FeatureIcon =
 
 export type Feature = {
   id: FeatureId;
+  /** Shown to readers. "F4" means nothing to someone visiting the site. */
+  label: string;
   icon: FeatureIcon;
   title: string;
   description: string;
@@ -74,6 +81,7 @@ export type Feature = {
 export const features: Feature[] = [
   {
     id: 'F1',
+    label: 'Setup',
     icon: 'user-cog',
     title: 'Profile and preferences',
     description:
@@ -81,6 +89,7 @@ export const features: Feature[] = [
   },
   {
     id: 'F2',
+    label: 'Discovery',
     icon: 'search',
     title: 'Personalised discovery',
     description:
@@ -88,6 +97,7 @@ export const features: Feature[] = [
   },
   {
     id: 'F3',
+    label: 'Matching',
     icon: 'list-checks',
     title: 'Explainable match',
     description:
@@ -95,6 +105,7 @@ export const features: Feature[] = [
   },
   {
     id: 'F4',
+    label: 'Opportunity detail',
     icon: 'clipboard-list',
     title: 'Decision-ready opportunity detail',
     description:
@@ -102,6 +113,7 @@ export const features: Feature[] = [
   },
   {
     id: 'F5',
+    label: 'Planning',
     icon: 'calendar-clock',
     title: 'Plan, forecast and reminders',
     description:
@@ -109,6 +121,7 @@ export const features: Feature[] = [
   },
   {
     id: 'F6',
+    label: 'Search',
     icon: 'message-circle',
     title: 'Ask Radar',
     description:
