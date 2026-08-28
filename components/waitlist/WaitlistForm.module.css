@@ -1,0 +1,148 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--radar-space-6);
+  padding: var(--radar-space-6);
+  border: 1px solid var(--radar-color-border);
+  border-radius: var(--radar-radius-large);
+  background: var(--radar-color-surface);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--radar-space-5);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--radar-space-5);
+}
+
+@media (min-width: 768px) {
+  .row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Shared control styling for text/email inputs, selects and the textarea. */
+.control {
+  min-height: var(--radar-size-tap-minimum);
+  width: 100%;
+  border: 1px solid var(--radar-color-border);
+  border-radius: var(--radar-radius-medium);
+  background: var(--radar-color-surface);
+  color: var(--radar-color-text-body);
+  font-family: var(--radar-font-sans);
+  font-size: var(--radar-font-size-body);
+  line-height: var(--radar-line-height-body);
+  padding-inline: var(--radar-space-4);
+  transition: border-color var(--radar-duration-base) var(--radar-ease-standard);
+}
+
+.control[data-invalid='true'] {
+  border-color: var(--radar-color-error-text);
+}
+
+.textarea {
+  min-height: calc(var(--radar-size-tap-minimum) * 2);
+  padding-block: var(--radar-space-3);
+  resize: vertical;
+}
+
+.counter {
+  color: var(--radar-color-text-secondary);
+  white-space: nowrap;
+}
+
+.consentRow {
+  display: flex;
+  align-items: center;
+  gap: var(--radar-space-3);
+}
+
+/* The label is the real touch target; the native box alone is too small. */
+.consentRow label {
+  display: flex;
+  align-items: center;
+  min-height: var(--radar-size-tap-minimum);
+}
+
+.consentCheckbox {
+  flex-shrink: 0;
+  width: var(--radar-space-5);
+  height: var(--radar-space-5);
+  accent-color: var(--radar-color-action-primary);
+}
+
+.error {
+  display: flex;
+  align-items: center;
+  gap: var(--radar-space-1);
+  color: var(--radar-color-error-text);
+}
+
+.errorIcon {
+  flex-shrink: 0;
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--radar-space-2);
+  padding: var(--radar-space-4);
+  border: 1px solid var(--radar-color-error-text);
+  border-radius: var(--radar-radius-medium);
+  background: var(--radar-color-error-surface);
+}
+
+.summaryTitle {
+  display: flex;
+  align-items: center;
+  gap: var(--radar-space-2);
+  color: var(--radar-color-error-text);
+}
+
+.summaryIcon {
+  flex-shrink: 0;
+}
+
+.summaryList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--radar-space-1);
+  padding-left: var(--radar-space-6);
+  list-style: disc;
+}
+
+.summaryLink {
+  color: var(--radar-color-error-text);
+  text-decoration: underline;
+}
+
+.errorBanner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--radar-space-3);
+  padding: var(--radar-space-4);
+  border: 1px solid var(--radar-color-error-text);
+  border-radius: var(--radar-radius-medium);
+  background: var(--radar-color-error-surface);
+  color: var(--radar-color-error-text);
+}
+
+.submitRow {
+  display: flex;
+}
+
+.submit {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .submit {
+    width: auto;
+  }
+}

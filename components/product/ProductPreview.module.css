@@ -1,0 +1,49 @@
+.preview {
+  display: flex;
+  flex-direction: column;
+  gap: var(--radar-space-4);
+  align-items: center;
+  width: 100%;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--radar-space-2);
+  padding: var(--radar-space-1);
+  background: var(--radar-color-surface-subdued);
+  border-radius: var(--radar-radius-medium);
+}
+
+.tab {
+  min-height: var(--radar-size-tap-minimum);
+  padding-inline: var(--radar-space-4);
+  border-radius: var(--radar-radius-small);
+  color: var(--radar-color-text-secondary);
+  transition: background var(--radar-duration-base) var(--radar-ease-standard),
+    color var(--radar-duration-base) var(--radar-ease-standard);
+}
+
+.tab:hover {
+  color: var(--radar-color-text-primary);
+}
+
+.tabSelected {
+  background: var(--radar-color-surface);
+  color: var(--radar-color-text-primary);
+  box-shadow: var(--radar-shadow-level-1);
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--radar-space-3);
+  align-items: center;
+  width: 100%;
+}
+
+.caption {
+  color: var(--radar-color-text-secondary);
+  text-align: center;
+}

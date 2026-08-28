@@ -1,0 +1,38 @@
+.hero {
+  position: relative;
+  isolation: isolate;
+}
+
+.arcs {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--radar-color-border);
+  opacity: 0.7;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@media (max-width: 767px) {
+  .arcs {
+    display: none;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--radar-space-4);
+  max-width: var(--radar-size-content-app-max);
+}
+
+.overline {
+  color: var(--radar-color-signal-text);
+  letter-spacing: 0.06em;
+}
+
+.lead {
+  color: var(--radar-color-text-secondary);
+  max-width: 68ch;
+}

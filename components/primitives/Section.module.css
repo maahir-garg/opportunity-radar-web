@@ -1,0 +1,29 @@
+.section {
+  padding-block: var(--radar-space-16);
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-block: var(--radar-space-20);
+  }
+}
+
+.canvas {
+  background: var(--radar-color-canvas);
+  color: var(--radar-color-text-body);
+}
+
+.surface {
+  background: var(--radar-color-surface);
+  color: var(--radar-color-text-body);
+}
+
+.subdued {
+  background: var(--radar-color-surface-subdued);
+  color: var(--radar-color-text-body);
+}
+
+.navy {
+  background: var(--radar-color-action-primary);
+  color: var(--radar-color-text-inverse);
+}

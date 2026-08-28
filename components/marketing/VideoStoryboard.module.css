@@ -1,0 +1,51 @@
+.scroll {
+  overflow-x: auto;
+  border: 1px solid var(--radar-color-border);
+  border-radius: var(--radar-radius-large);
+  background: var(--radar-color-surface);
+}
+
+.scroll:focus-visible {
+  outline: 3px solid var(--radar-color-focus);
+  outline-offset: var(--radar-focus-offset);
+}
+
+.table {
+  width: 100%;
+  min-width: 64ch;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  text-align: left;
+  padding: var(--radar-space-3) var(--radar-space-4);
+  vertical-align: top;
+  border-bottom: 1px solid var(--radar-color-border);
+}
+
+.table thead th {
+  color: var(--radar-color-text-secondary);
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid var(--radar-color-border-strong);
+  white-space: nowrap;
+}
+
+.table tbody tr:nth-child(even) {
+  background: var(--radar-color-surface-quiet);
+}
+
+.table tbody th {
+  font-weight: var(--radar-font-weight-regular);
+  color: var(--radar-color-text-secondary);
+}
+
+.table tfoot th,
+.table tfoot td {
+  border-bottom: none;
+  border-top: 1px solid var(--radar-color-border-strong);
+}
+
+.seconds {
+  white-space: nowrap;
+}

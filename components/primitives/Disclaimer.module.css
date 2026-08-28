@@ -1,0 +1,6 @@
+.disclaimer {
+  color: var(--radar-color-text-secondary);
+  font-size: var(--radar-font-size-caption);
+  line-height: var(--radar-line-height-caption);
+  font-weight: var(--radar-font-weight-semibold);
+}

@@ -1,0 +1,66 @@
+.screen {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--radar-color-canvas);
+}
+
+.topBar {
+  display: flex;
+  align-items: center;
+  gap: var(--radar-space-3);
+  padding: var(--radar-space-3) var(--radar-space-4);
+  background: var(--radar-color-surface);
+  border-block-end: 1px solid var(--radar-color-border);
+  flex: none;
+}
+
+.topTitle {
+  color: var(--radar-color-text-primary);
+  margin-inline-end: auto;
+}
+
+.topIcon {
+  color: var(--radar-color-text-primary);
+  flex: none;
+}
+
+.body {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: var(--radar-space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--radar-space-5);
+}
+
+.bottomNav {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--radar-space-1);
+  padding: var(--radar-space-2) var(--radar-space-2) var(--radar-space-3);
+  background: var(--radar-color-surface);
+  border-block-start: 1px solid var(--radar-color-border);
+  flex: none;
+}
+
+.navItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--radar-space-1);
+  color: var(--radar-color-text-secondary);
+}
+
+.navCurrent {
+  color: var(--radar-color-action-primary);
+}
+
+.navCurrent .navLabel {
+  font-weight: var(--radar-font-weight-bold);
+}
+
+.navLabel {
+  text-align: center;
+}

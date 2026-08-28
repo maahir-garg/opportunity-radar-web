@@ -1,0 +1,27 @@
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--radar-space-1);
+}
+
+.score {
+  display: flex;
+  align-items: center;
+  gap: var(--radar-space-2);
+  color: var(--radar-color-text-body);
+}
+
+.star {
+  color: var(--radar-color-signal);
+}
+
+.recommend {
+  display: flex;
+  align-items: center;
+  gap: var(--radar-space-2);
+  color: var(--radar-color-text-secondary);
+}
+
+.sparse {
+  color: var(--radar-color-text-secondary);
+}

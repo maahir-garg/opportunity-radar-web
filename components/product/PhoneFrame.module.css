@@ -1,0 +1,61 @@
+.frame {
+  width: 100%;
+  max-width: 24.375rem; /* 390px reference width */
+  margin-inline: auto;
+}
+
+.bezel {
+  background: var(--radar-color-surface);
+  border: 1px solid var(--radar-color-border-strong);
+  border-radius: var(--radar-radius-sheet);
+  box-shadow: var(--radar-shadow-level-1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.statusBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--radar-space-2) var(--radar-space-4);
+  background: var(--radar-color-surface);
+  color: var(--radar-color-text-primary);
+}
+
+.time {
+  letter-spacing: 0.02em;
+}
+
+.indicators {
+  display: flex;
+  align-items: center;
+  gap: var(--radar-space-1);
+}
+
+.bar {
+  width: var(--radar-space-1);
+  height: var(--radar-space-2);
+  border-radius: 1px;
+  background: var(--radar-color-text-secondary);
+}
+
+.battery {
+  width: var(--radar-space-5);
+  height: var(--radar-space-2);
+  border: 1px solid var(--radar-color-text-secondary);
+  border-radius: 2px;
+}
+
+.screen {
+  background: var(--radar-color-canvas);
+  height: 34rem;
+  overflow: hidden;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .screen {
+    height: 38rem;
+  }
+}

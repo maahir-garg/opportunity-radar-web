@@ -1,40 +1,49 @@
+@import './radar-tokens.css';
+
+/*
+ * --radar-font-sans is defined in radar-tokens.css with a static fallback
+ * stack. Here we redefine it to lead with the next/font/google-loaded
+ * variable (set on <html> in app/layout.tsx) while keeping the same
+ * documented fallback stack.
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --radar-font-sans: var(--font-manrope), Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html {
-  height: 100%;
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 * {
-  box-sizing: border-box;
-  padding: 0;
   margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  overflow-x: clip;
+}
+
+body {
+  min-height: 100dvh;
+  overflow-x: clip;
+  background: var(--radar-color-canvas);
+  color: var(--radar-color-text-body);
+  font-family: var(--radar-font-sans);
+  font-size: var(--radar-font-size-body);
+  line-height: var(--radar-line-height-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+svg {
+  max-width: 100%;
+  display: block;
 }
 
 a {
@@ -42,8 +51,120 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+/* Smooth in-page anchor scrolling, guarded for reduced motion. */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
   html {
-    color-scheme: dark;
+    scroll-behavior: auto;
   }
+}
+
+/* Clear the sticky 64px header when jumping to an in-page anchor. */
+[id] {
+  scroll-margin-top: var(--radar-space-16);
+}
+
+/* Global focus ring. */
+:focus-visible {
+  outline: 3px solid var(--radar-color-focus);
+  outline-offset: var(--radar-focus-offset);
+}
+
+/* Typography utilities — see docs/BUILD-CONTRACT.md §4. */
+
+.type-display {
+  font-size: var(--radar-font-size-display);
+  line-height: var(--radar-line-height-display);
+  font-weight: var(--radar-font-weight-bold);
+}
+
+@media (max-width: 767px) {
+  .type-display {
+    font-size: var(--radar-font-size-heading-1);
+    line-height: var(--radar-line-height-heading-1);
+  }
+}
+
+.type-h1 {
+  font-size: var(--radar-font-size-heading-1);
+  line-height: var(--radar-line-height-heading-1);
+  font-weight: var(--radar-font-weight-bold);
+}
+
+.type-h2 {
+  font-size: var(--radar-font-size-heading-2);
+  line-height: var(--radar-line-height-heading-2);
+  font-weight: var(--radar-font-weight-bold);
+}
+
+.type-h3 {
+  font-size: var(--radar-font-size-heading-3);
+  line-height: var(--radar-line-height-heading-3);
+  font-weight: 650;
+}
+
+/* font-size: body-large / line-height: heading-3 — see contract §4 note. */
+.type-title {
+  font-size: var(--radar-font-size-body-large);
+  line-height: var(--radar-line-height-heading-3);
+  font-weight: 650;
+}
+
+.type-body-large {
+  font-size: var(--radar-font-size-body-large);
+  line-height: var(--radar-line-height-body-large);
+  font-weight: var(--radar-font-weight-regular);
+}
+
+.type-body {
+  font-size: var(--radar-font-size-body);
+  line-height: var(--radar-line-height-body);
+  font-weight: var(--radar-font-weight-regular);
+}
+
+.type-label {
+  font-size: var(--radar-font-size-small);
+  line-height: var(--radar-line-height-small);
+  font-weight: 650;
+}
+
+.type-small {
+  font-size: var(--radar-font-size-small);
+  line-height: var(--radar-line-height-small);
+  font-weight: var(--radar-font-weight-regular);
+}
+
+.type-caption {
+  font-size: var(--radar-font-size-caption);
+  line-height: var(--radar-line-height-caption);
+  font-weight: var(--radar-font-weight-semibold);
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/*
+ * Container-independent layout helper: vertical rhythm between stacked
+ * children, for the rare page that composes primitives directly without a
+ * bespoke module (e.g. app/not-found.tsx).
+ */
+.stack > * + * {
+  margin-top: var(--radar-space-4);
 }

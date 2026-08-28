@@ -1,0 +1,46 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  margin-block-start: var(--radar-space-8);
+  border-block-start: 1px solid var(--radar-color-border);
+  max-width: 52rem;
+}
+
+.item {
+  border-block-end: 1px solid var(--radar-color-border);
+}
+
+.summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--radar-space-4);
+  min-height: var(--radar-size-tap-minimum);
+  padding-block: var(--radar-space-4);
+  cursor: pointer;
+  list-style: none;
+}
+
+.summary::-webkit-details-marker {
+  display: none;
+}
+
+.question {
+  color: var(--radar-color-text-primary);
+}
+
+.marker {
+  flex: none;
+  color: var(--radar-color-text-secondary);
+  transition: transform var(--radar-duration-base) var(--radar-ease-standard);
+}
+
+.item[open] .marker {
+  transform: rotate(45deg);
+}
+
+.answer {
+  color: var(--radar-color-text-secondary);
+  padding-block-end: var(--radar-space-5);
+  max-width: 44rem;
+}

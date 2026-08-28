@@ -1,0 +1,52 @@
+.scroller {
+  overflow-x: auto;
+  border: 1px solid var(--radar-color-border);
+  border-radius: var(--radar-radius-large);
+  background: var(--radar-color-surface);
+}
+
+.scroller:focus-visible {
+  outline: 3px solid var(--radar-color-focus);
+  outline-offset: var(--radar-focus-offset);
+}
+
+.table {
+  width: 100%;
+  min-width: 40rem;
+  border-collapse: collapse;
+  font-size: var(--radar-font-size-small);
+  line-height: var(--radar-line-height-small);
+}
+
+.caption {
+  caption-side: top;
+  text-align: left;
+  padding: var(--radar-space-4) var(--radar-space-5) 0;
+  color: var(--radar-color-text-secondary);
+}
+
+.table th,
+.table td {
+  text-align: left;
+  padding: var(--radar-space-3) var(--radar-space-5);
+  border-top: 1px solid var(--radar-color-border);
+  vertical-align: top;
+}
+
+.table thead th {
+  border-top: none;
+  font-size: var(--radar-font-size-caption);
+  line-height: var(--radar-line-height-caption);
+  font-weight: var(--radar-font-weight-semibold);
+  color: var(--radar-color-text-secondary);
+}
+
+.table tbody th {
+  font-weight: 650;
+  color: var(--radar-color-text-primary);
+  white-space: nowrap;
+}
+
+.table tbody td {
+  color: var(--radar-color-text-body);
+}

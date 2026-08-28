@@ -1,0 +1,10 @@
+.story {
+  display: flex;
+  flex-direction: column;
+  gap: var(--radar-space-4);
+  max-width: 68ch;
+}
+
+.paragraph {
+  color: var(--radar-color-text-body);
+}
