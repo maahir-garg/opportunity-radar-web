@@ -18,19 +18,19 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  /*
+   * min(100%, 13rem) lets a column collapse to the container on narrow
+   * phones, so option labels wrap at spaces instead of mid-word.
+   */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
   gap: var(--radar-space-2);
-}
-
-@media (min-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
 }
 
 .option {
   display: flex;
   align-items: center;
+  min-width: 0;
+  padding-block: var(--radar-space-2);
   gap: var(--radar-space-2);
   min-height: var(--radar-size-tap-minimum);
   border: 1px solid var(--radar-color-border);
@@ -69,6 +69,7 @@
 }
 
 .optionLabel {
+  min-width: 0;
   color: var(--radar-color-text-body);
 }
 
