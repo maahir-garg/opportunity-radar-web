@@ -14,7 +14,7 @@ const civic = getOpportunity('proto-civic-tech');
 
 function DiscoverVisual() {
   return (
-    <div className={styles.visual}>
+    <div className={styles.visual} aria-hidden="true">
       <div className={styles.searchRow}>
         <Search size={16} strokeWidth={1.75} aria-hidden="true" />
         <span className={`type-small ${styles.searchText}`}>Search opportunities</span>
@@ -34,7 +34,7 @@ function DiscoverVisual() {
 function DecideVisual() {
   if (!research) return null;
   return (
-    <div className={styles.visual}>
+    <div className={styles.visual} aria-hidden="true">
       <SourceTrustBlock source={research.source} organiser={research.organiser} />
       <div className={styles.eligibility}>
         <h4 className={`type-caption ${styles.eligibilityTitle}`}>You meet</h4>
@@ -66,7 +66,7 @@ const PLAN_TABS = ['Saved', 'Preparing', 'Applied', 'Past'] as const;
 function ActVisual() {
   if (!civic?.applicationDeadline || !research?.applicationDeadline) return null;
   return (
-    <div className={styles.visual}>
+    <div className={styles.visual} aria-hidden="true">
       <ul className={styles.planTabs}>
         {PLAN_TABS.map((tab, index) => (
           <li
@@ -138,9 +138,12 @@ export function Outcomes() {
                 <h3 className={`type-h2 ${styles.title}`}>{title}</h3>
                 <p className={`type-body ${styles.body}`}>{body}</p>
               </div>
-              <div className={styles.visualWrap}>
+              <figure className={styles.visualWrap}>
+                <figcaption className={`type-caption ${styles.visualLabel}`}>
+                  From the app
+                </figcaption>
                 <Visual />
-              </div>
+              </figure>
             </article>
           ))}
         </div>
