@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Manrope } from 'next/font/google';
 import './globals.css';
 import { SkipLink } from '@/components/site/SkipLink';
+import { HashScroll } from '@/components/site/HashScroll';
 import { SiteHeader } from '@/components/site/SiteHeader';
 import { SiteFooter } from '@/components/site/SiteFooter';
 
@@ -44,6 +45,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
     <html lang="en-SG" className={manrope.variable}>
       <body>
         <SkipLink />
+        <HashScroll />
         <SiteHeader />
         {children}
         <SiteFooter />

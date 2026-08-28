@@ -25,12 +25,10 @@
 
 html {
   -webkit-text-size-adjust: 100%;
-  overflow-x: clip;
 }
 
 body {
   min-height: 100dvh;
-  overflow-x: clip;
   background: var(--radar-color-canvas);
   color: var(--radar-color-text-body);
   font-family: var(--radar-font-sans);

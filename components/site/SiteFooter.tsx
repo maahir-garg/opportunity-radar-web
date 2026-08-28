@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { AnchorLink } from './AnchorLink';
 import { RadarMark } from '@/components/primitives/RadarMark';
 import { Disclaimer } from '@/components/primitives/Disclaimer';
 import styles from './SiteFooter.module.css';
@@ -26,9 +26,9 @@ export function SiteFooter() {
           <ul className={styles.linkList}>
             {FOOTER_LINKS.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className={`type-body ${styles.link}`}>
+                <AnchorLink href={link.href} className={`type-body ${styles.link}`}>
                   {link.label}
-                </Link>
+                </AnchorLink>
               </li>
             ))}
           </ul>

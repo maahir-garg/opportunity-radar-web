@@ -7,6 +7,8 @@ import type {
   ReactNode,
 } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { handleHashClick } from '@/lib/hash-navigation';
 import { VisuallyHidden } from './VisuallyHidden';
 import styles from './Button.module.css';
 
@@ -78,6 +80,7 @@ function isExternalHref(href: string): boolean {
 }
 
 export function Button(props: ButtonProps) {
+  const pathname = usePathname();
   const {
     variant = 'primary',
     size = 'default',
@@ -130,6 +133,7 @@ export function Button(props: ButtonProps) {
         return;
       }
       onClick?.(event);
+      if (!isExternal) handleHashClick(event, href, pathname);
     };
 
     if (isExternal) {
