@@ -71,7 +71,12 @@
 
 .lanes {
   position: relative;
-  height: var(--radar-space-8);
+  /*
+   * Confirmed marks and expected bands share this one row and both hang from
+   * the baseline, so a point-in-time and a span read as the same timeline
+   * rather than two unrelated graphics.
+   */
+  height: var(--radar-space-5);
   border-block-start: 1px solid var(--radar-color-border-strong);
 }
 
@@ -81,20 +86,21 @@
   inset-inline-start: var(--mark-offset);
   width: 3px;
   height: var(--radar-space-4);
-  border-radius: var(--radar-radius-full);
+  border-end-start-radius: var(--radar-radius-full);
+  border-end-end-radius: var(--radar-radius-full);
   background: var(--radar-color-action-primary);
   transform: translateX(-1px);
 }
 
 .expectedBand {
   position: absolute;
-  inset-block-end: var(--radar-space-1);
+  inset-block-start: var(--radar-space-1);
   inset-inline-start: var(--band-start);
   width: var(--band-width);
   min-width: var(--radar-space-8);
-  height: var(--radar-space-3);
-  border: 2px dashed var(--radar-color-signal);
-  border-radius: var(--radar-radius-small);
+  height: var(--radar-space-2);
+  border-block: 2px dashed var(--radar-color-signal);
+  border-inline-start: 2px dashed var(--radar-color-signal);
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -102,7 +108,9 @@
 }
 
 .bandArrow {
-  margin-inline-end: calc(var(--radar-space-1) * -1);
+  /* The chevron replaces a right edge: the window runs past the 30-day axis. */
+  margin-inline-end: calc(var(--radar-space-2) * -1);
+  flex: none;
 }
 
 .list {
