@@ -22,7 +22,7 @@
 .item {
   display: flex;
   flex-direction: column;
-  gap: var(--radar-space-2);
+  gap: var(--radar-space-3);
 }
 
 .heading {
@@ -32,11 +32,12 @@
 }
 
 /*
- * Optically centre the icon tile against the title's first line, so a title
- * that wraps to two lines does not drag the icon down with it.
+ * Centre the title's first line against the icon tile by padding the title,
+ * not by pulling the icon up. Offsetting the icon made the heading row's box
+ * overhang the text, which left uneven space above and below it.
  */
-.iconWrap {
-  margin-block-start: calc((var(--radar-line-height-heading-3) - var(--radar-space-10)) / 2);
+.title {
+  padding-block-start: calc((var(--radar-space-10) - var(--radar-line-height-heading-3)) / 2);
 }
 
 .iconWrap {
