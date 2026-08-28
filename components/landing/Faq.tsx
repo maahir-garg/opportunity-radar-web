@@ -18,7 +18,7 @@ const QUESTIONS = [
   {
     question: 'What does the match percentage mean?',
     answer:
-      'It scores how well an opportunity fits the profile details you gave us — your year, school, interests, goals and the time you have. It is never a chance of acceptance, and "Why this matches" is always one tap away so you can see exactly which factors produced it.',
+      'It scores how well an opportunity fits the profile details you gave us: your year, school, interests, goals and the time you have. It is never a chance of acceptance, and "Why this matches" is always one tap away so you can see exactly which factors produced it.',
   },
   {
     question: 'What is an "expected" opportunity?',
@@ -28,7 +28,7 @@ const QUESTIONS = [
   {
     question: 'What happens to my email?',
     answer:
-      'Nothing is stored by this prototype site. The sign-up form validates your details and confirms in your browser; there is no database, no mailing-list provider and no third-party tracking here. If we run a real pilot we will ask for your consent again first.',
+      'Nothing is stored by this site. The sign-up form validates your details and confirms in your browser; there is no database, no mailing-list provider and no third-party tracking here. If we run a real pilot we will ask for your consent again first.',
   },
   {
     question: 'When can I use it?',

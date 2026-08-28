@@ -1,6 +1,6 @@
 // All formatting is pinned to Asia/Singapore so server and client render
 // identically regardless of host timezone, and all "today" math is measured
-// against PROTOTYPE_TODAY — never Date.now(). See docs/BUILD-CONTRACT.md §5.
+// against PROTOTYPE_TODAY, never Date.now(). See docs/BUILD-CONTRACT.md §5.
 //
 // Month names are resolved from a fixed table rather than an Intl locale
 // string: different ICU data sets abbreviate September as "Sep" or "Sept"

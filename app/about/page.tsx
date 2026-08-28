@@ -49,7 +49,7 @@ export default function AboutPage() {
           <SectionHeader
             overline="Three goals"
             title="What Radar is trying to do"
-            lead="Every feature below exists to serve one of these three goals — nothing in the MVP is built without one in mind."
+            lead="Every feature below exists to serve one of these three goals. Nothing in the MVP is built without one in mind."
           />
           <GoalsGrid goals={goals} />
         </Container>
@@ -71,7 +71,7 @@ export default function AboutPage() {
           <SectionHeader
             overline="Requirement traceability"
             title="Goal, feature, surface, evidence"
-            lead="The table below is how we would check the product actually does what each goal claims — not just that a screen exists."
+            lead="The table below is how we would check the product actually does what each goal claims, not just that a screen exists."
           />
           <TraceabilityTable rows={traceabilityRows} />
         </Container>

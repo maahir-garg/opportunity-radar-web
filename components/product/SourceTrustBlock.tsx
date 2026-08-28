@@ -25,7 +25,7 @@ const STATUS_CLASS: Record<SourceStatus, string> = {
 
 /**
  * Provenance and freshness beside the decision. "Official source" describes the
- * destination page — it never means Radar is an official NUS product.
+ * destination page. It never means Radar is an official NUS product.
  */
 export function SourceTrustBlock({ source, organiser, className }: SourceTrustBlockProps) {
   const classNames = [styles.block, className ?? ''].filter(Boolean).join(' ');

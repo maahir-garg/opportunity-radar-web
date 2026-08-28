@@ -99,19 +99,19 @@ function ActVisual() {
 
 const OUTCOMES = [
   {
-    goal: 'Goal 1 — Discover',
+    goal: 'Goal 1: Discover',
     title: 'One place instead of six channels.',
     body: 'Internships, research, competitions, exchanges, volunteering, talks, grants and ventures share one catalogue and one taxonomy. Search works the ordinary way, and the feed keeps the list short enough to actually read.',
     Visual: DiscoverVisual,
   },
   {
-    goal: 'Goal 2 — Decide',
+    goal: 'Goal 2: Decide',
     title: 'The evidence sits next to the decision.',
     body: 'Before you commit an evening, you can see who is running it, which page the listing came from, when we last checked that page, what you already qualify for, what you still need to confirm, and what students who went before you said.',
     Visual: DecideVisual,
   },
   {
-    goal: 'Goal 3 — Act',
+    goal: 'Goal 3: Act',
     title: 'A deadline plan you can actually keep.',
     body: 'Saving something records a status and a next action instead of burying it in a bookmark folder. Reminders use the real deadline, and Plan groups everything by when it is due.',
     Visual: ActVisual,

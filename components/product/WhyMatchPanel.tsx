@@ -49,7 +49,7 @@ function Group({ title, items, icon }: GroupProps) {
 
 /**
  * The explanation behind a match number. Satisfied factors, facts Radar does
- * not know, and hard blockers — always with the "profile fit" disclaimer.
+ * not know, and hard blockers, always with the "profile fit" disclaimer.
  */
 export function WhyMatchPanel({ match, className }: WhyMatchPanelProps) {
   const classNames = [styles.panel, className ?? ''].filter(Boolean).join(' ');

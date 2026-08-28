@@ -8,7 +8,7 @@ export function VideoStoryboard() {
   return (
     <div>
       <SectionHeader
-        overline="Implementation — video"
+        overline="Implementation: video"
         title="Promotional video outline"
         lead={videoConceptSummary}
       />

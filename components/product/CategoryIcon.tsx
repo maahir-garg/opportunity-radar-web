@@ -11,7 +11,7 @@ import {
 import type { LucideIcon } from 'lucide-react';
 import type { CategoryId } from '@/lib/types';
 
-/** Canonical taxonomy icons — see design-system/01-PRODUCT-UX-SPEC.txt. */
+/** Canonical taxonomy icons: see design-system/01-PRODUCT-UX-SPEC.txt. */
 const ICONS: Record<CategoryId, LucideIcon> = {
   career: BriefcaseBusiness,
   research: FlaskConical,

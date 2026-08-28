@@ -6,7 +6,7 @@ import styles from './InterviewQuotes.module.css';
 
 const QUOTES = [
   {
-    quote: 'Talk quality is hard to gauge upfront — there is no verification system.',
+    quote: 'Talk quality is hard to gauge upfront. There is no verification system.',
     attribution: 'NUS undergraduate · interview 1',
   },
   {

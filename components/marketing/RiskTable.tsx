@@ -3,7 +3,7 @@ import { SectionHeader } from '@/components/primitives/SectionHeader';
 import { risks } from '@/lib/content/campaign';
 import styles from './RiskTable.module.css';
 
-/** Four risks and what we would do about each — four cards, not a wall of text. */
+/** Four risks and what we would do about each: four cards, not a wall of text. */
 export function RiskTable() {
   return (
     <div>

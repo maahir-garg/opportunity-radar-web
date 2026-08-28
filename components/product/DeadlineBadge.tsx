@@ -20,7 +20,7 @@ const TONE_CLASS: Record<Tone, string> = {
 };
 
 /**
- * "Closes in 5 days · 2 Sep 2026, 11:59 PM SGT" — relative urgency first, the
+ * "Closes in 5 days · 2 Sep 2026, 11:59 PM SGT": relative urgency first, the
  * absolute date and timezone always present. Never pulses.
  */
 export function DeadlineBadge({ deadline, availability, className }: DeadlineBadgeProps) {

@@ -8,7 +8,7 @@ import {
 } from '@/lib/content/campaign';
 import styles from './AssetSamples.module.css';
 
-/** A QR placeholder drawn as a simple repeating square pattern — never a real QR image. */
+/** A QR placeholder drawn as a simple repeating square pattern, never a real QR image. */
 function QrPlaceholder() {
   const cells = [1, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1];
   return (
@@ -34,9 +34,9 @@ export function AssetSamples() {
   return (
     <div>
       <SectionHeader
-        overline="Implementation — samples"
+        overline="Implementation: samples"
         title="Sample assets"
-        lead="What each channel&rsquo;s first piece would actually say — short, plain, and written the way a student would send it."
+        lead="What each channel&rsquo;s first piece would actually say: short, plain, and written the way a student would send it."
       />
       <p className={`type-small ${styles.illustrative}`}>
         The listings named in these samples are illustrative placeholders. Real posts would only
