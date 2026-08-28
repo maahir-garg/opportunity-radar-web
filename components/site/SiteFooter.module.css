@@ -54,10 +54,6 @@
   text-decoration: underline;
 }
 
-.contactValue {
-  color: var(--radar-color-text-body);
-}
-
 .meta {
   color: var(--radar-color-text-secondary);
 }

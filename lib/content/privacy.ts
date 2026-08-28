@@ -46,16 +46,15 @@ export const privacySections: ProseBlock[] = [
   {
     heading: 'Not an NUS service',
     paragraphs: [
-      'Opportunity Radar is a student project built for CS3216 coursework. It is not affiliated with, endorsed by, or operated by the National University of Singapore, and no NUS crest, seal or wordmark appears anywhere on this site.',
+      'Opportunity Radar is a student project. It is not affiliated with, endorsed by, or operated by the National University of Singapore, and no NUS crest, seal or wordmark appears anywhere on this site.',
     ],
   },
 ];
 
 export const privacyContact = {
-  heading: 'Contact',
+  heading: 'Questions about this page',
   paragraph:
-    'Questions about this page can go to hello@opportunityradar.example — a placeholder inbox set up for this coursework prototype, not a monitored support address.',
-  email: 'hello@opportunityradar.example',
+    'Radar has no support inbox yet, because there is nothing running for it to support. We will publish a contact address here before the pilot opens, and everyone on the pilot list will get it by email at the same time.',
 } as const;
 
 export const lastReviewed = 'Last reviewed 28 August 2026';

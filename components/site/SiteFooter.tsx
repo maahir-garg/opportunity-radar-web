@@ -35,19 +35,20 @@ export function SiteFooter() {
         </div>
 
         <div className={styles.column}>
-          <p className={`type-caption ${styles.heading}`}>Contact</p>
-          <p className={`type-body ${styles.contactValue}`}>hello@opportunityradar.example</p>
-          <p className={`type-small ${styles.meta}`}>Placeholder address for this prototype.</p>
+          <p className={`type-caption ${styles.heading}`}>Built by students</p>
+          <p className={`type-body ${styles.meta}`}>
+            Radar is made by NUS undergraduates who kept missing the deadlines they cared about.
+          </p>
           <p className={`type-small ${styles.meta}`}>
-            A CS3216 Assignment 1 project, National University of Singapore.
+            Join the pilot list and we will write to you before it opens.
           </p>
         </div>
       </div>
 
       <div className={styles.notice}>
         <p className={`type-small ${styles.noticeInner}`}>
-          Demo content — every listing, review, organiser and date shown here is fictional and used
-          for design testing.
+          Sample content: the listings, reviews, organisers and dates shown on this site are
+          examples, not live opportunities.
         </p>
       </div>
     </footer>
