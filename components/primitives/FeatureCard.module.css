@@ -1,0 +1,57 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--radar-space-2);
+  height: 100%;
+  padding: var(--radar-space-5);
+  background: var(--radar-color-surface);
+  border: 1px solid var(--radar-color-border);
+  border-radius: var(--radar-radius-large);
+}
+
+/* No card chrome: used where the surrounding section already provides it. */
+.plain {
+  padding: 0;
+  background: none;
+  border: 0;
+  border-radius: 0;
+}
+
+.label {
+  color: var(--radar-color-signal-text);
+}
+
+.heading {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--radar-space-3);
+}
+
+/*
+ * Optically centre the icon tile against the title's first line, so a title
+ * that wraps to two lines does not drag the icon down with it.
+ */
+.iconWrap {
+  margin-block-start: calc((var(--radar-line-height-heading-3) - var(--radar-space-10)) / 2);
+}
+
+.iconWrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: var(--radar-space-10);
+  height: var(--radar-space-10);
+  border-radius: var(--radar-radius-medium);
+  background: var(--radar-color-surface-subdued);
+  color: var(--radar-color-action-primary);
+}
+
+.title {
+  color: var(--radar-color-text-primary);
+  min-width: 0;
+}
+
+.description {
+  color: var(--radar-color-text-secondary);
+}

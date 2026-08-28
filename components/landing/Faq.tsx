@@ -41,7 +41,7 @@ export function Faq() {
   return (
     <Section tone="canvas">
       <Container>
-        <SectionHeader overline="Questions" title="Before you sign up." />
+        <SectionHeader overline="FAQ" title="Before you sign up." />
         <ul className={styles.list}>
           {QUESTIONS.map((item) => (
             <li key={item.question}>
