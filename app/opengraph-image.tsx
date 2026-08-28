@@ -29,9 +29,22 @@ export default function Image() {
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
           <svg width="56" height="56" viewBox="0 0 32 32" fill="none">
-            <circle cx="16" cy="16" r="13" stroke={WHITE} strokeWidth="1.5" opacity={0.35} />
-            <circle cx="16" cy="16" r="7.5" stroke={WHITE} strokeWidth="2.5" opacity={0.7} />
-            <circle cx="24.5" cy="9.5" r="2.75" fill={SIGNAL_ORANGE} />
+            <path
+              d="M27 25A20 20 0 0 0 7 5"
+              stroke={WHITE}
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              opacity={0.45}
+            />
+            <path
+              d="M20 25A13 13 0 0 0 7 12"
+              stroke={WHITE}
+              strokeWidth="2.25"
+              strokeLinecap="round"
+              opacity={0.75}
+            />
+            <path d="M13 25A6 6 0 0 0 7 19" stroke={WHITE} strokeWidth="2.25" strokeLinecap="round" />
+            <circle cx="7" cy="25" r="2.75" fill={SIGNAL_ORANGE} />
           </svg>
           <span style={{ fontSize: 36, fontWeight: 700 }}>Radar</span>
         </div>
