@@ -473,10 +473,9 @@ details to judge competitiveness, and a clearly-marked placeholder contact
 `hello@opportunityradar.example`.
 
 ### `/api/waitlist` — POST
-Validates the payload, then hands it to `lib/waitlist-store.ts`, which emails
-it via Resend (`RESEND_API_KEY` + `WAITLIST_NOTIFY_EMAIL`), writes to
-Upstash/Vercel KV (`KV_REST_API_URL` + `KV_REST_API_TOKEN`), or POSTs to
-`WAITLIST_WEBHOOK_URL`, whichever is configured first, in that order.
+Validates the payload, then hands it to `lib/waitlist-store.ts`, which writes
+to Upstash/Vercel KV (`KV_REST_API_URL` + `KV_REST_API_TOKEN`) or POSTs to
+`WAITLIST_WEBHOOK_URL`, whichever is configured.
 
 - Stored → `200 { ok: true, message, handle }`.
 - Invalid → `400 { ok: false, errors }`.
