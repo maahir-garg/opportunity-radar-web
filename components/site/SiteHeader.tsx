@@ -14,6 +14,7 @@ const NAV_LINKS = [
   { label: 'Trust', href: '/#trust' },
   { label: 'Campaign', href: '/marketing' },
   { label: 'About', href: '/about' },
+  { label: 'Privacy', href: '/privacy' },
 ];
 
 export function SiteHeader() {

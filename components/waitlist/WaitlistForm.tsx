@@ -1,6 +1,6 @@
 'use client';
 
-import { useId, useState, type FormEvent } from 'react';
+import { useEffect, useId, useRef, useState, type FormEvent } from 'react';
 import { TriangleAlert } from 'lucide-react';
 import { Button } from '@/components/primitives/Button';
 import { VisuallyHidden } from '@/components/primitives/VisuallyHidden';
@@ -8,6 +8,7 @@ import { categories } from '@/lib/data';
 import type { CategoryId } from '@/lib/types';
 import {
   CHANNEL_OPTIONS,
+  CHANNEL_OTHER_MAX_LENGTH,
   FACULTY_OPTIONS,
   NOTE_MAX_LENGTH,
   YEAR_OPTIONS,
@@ -27,6 +28,7 @@ type FormValues = {
   faculty: string;
   interests: CategoryId[];
   channel: string;
+  channelOther: string;
   note: string;
   consent: boolean;
 };
@@ -38,6 +40,7 @@ const EMPTY_VALUES: FormValues = {
   faculty: '',
   interests: [],
   channel: '',
+  channelOther: '',
   note: '',
   consent: false,
 };
@@ -51,6 +54,7 @@ const FIELD_ORDER = [
   'faculty',
   'interests',
   'channel',
+  'channelOther',
   'note',
   'consent',
 ] as const;
@@ -78,6 +82,28 @@ export function WaitlistForm() {
   const [announcement, setAnnouncement] = useState('');
   const [submitted, setSubmitted] = useState<WaitlistSubmission | null>(null);
 
+  const channelOtherInputRef = useRef<HTMLInputElement>(null);
+  const showChannelOther = values.channel === 'Other';
+  const [channelOtherOpen, setChannelOtherOpen] = useState(false);
+
+  // Reveal the "Other" free-text field only while it is selected. The field
+  // mounts closed (grid-template-rows: 0fr) and a rAF flips it open on the
+  // next frame so the CSS transition actually animates instead of snapping,
+  // then focus moves into it immediately so keyboard/screen-reader users
+  // land on the newly revealed label without waiting for the animation.
+  useEffect(() => {
+    if (!showChannelOther) {
+      // Reset for next time (the block is unmounted while hidden, so this
+      // does not itself need to animate): scheduled rather than called
+      // straight from the effect body, matching the open branch below.
+      const raf = requestAnimationFrame(() => setChannelOtherOpen(false));
+      return () => cancelAnimationFrame(raf);
+    }
+    channelOtherInputRef.current?.focus();
+    const raf = requestAnimationFrame(() => setChannelOtherOpen(true));
+    return () => cancelAnimationFrame(raf);
+  }, [showChannelOther]);
+
   function setField<K extends keyof FormValues>(key: K, value: FormValues[K]) {
     setValues((previous) => ({ ...previous, [key]: value }));
   }
@@ -98,6 +124,7 @@ export function WaitlistForm() {
       faculty: current.faculty,
       interests: current.interests,
       channel: current.channel || undefined,
+      channelOther: current.channelOther || undefined,
       note: current.note || undefined,
       consent: current.consent,
     });
@@ -328,6 +355,33 @@ export function WaitlistForm() {
             </select>
           )}
         </Field>
+
+        {showChannelOther ? (
+          <div className={styles.channelOtherReveal} data-open={channelOtherOpen ? 'true' : undefined}>
+            <div className={styles.channelOtherRevealInner}>
+              <Field
+                id={fieldId('channelOther')}
+                label="Where did you hear about it?"
+                help={`Optional, up to ${CHANNEL_OTHER_MAX_LENGTH} characters.`}
+                error={errors.channelOther}
+              >
+                {(fieldProps) => (
+                  <input
+                    {...fieldProps}
+                    ref={channelOtherInputRef}
+                    type="text"
+                    name="channelOther"
+                    maxLength={CHANNEL_OTHER_MAX_LENGTH}
+                    className={styles.control}
+                    data-invalid={errors.channelOther ? 'true' : undefined}
+                    value={values.channelOther}
+                    onChange={(event) => setField('channelOther', event.target.value)}
+                  />
+                )}
+              </Field>
+            </div>
+          </div>
+        ) : null}
 
         <Field
           id={fieldId('note')}

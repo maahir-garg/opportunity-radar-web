@@ -62,6 +62,29 @@ export function VideoStoryboard() {
           </tfoot>
         </table>
       </div>
+      <ul className={styles.cards}>
+        {shotList.map((row) => (
+          <li className={styles.card} key={row.id}>
+            <p className={`type-label ${styles.cardHead}`}>{`Shot ${row.id} · ${row.seconds}s`}</p>
+            <div className={styles.field}>
+              <p className="type-caption">Shot</p>
+              <p className="type-small">{row.shot}</p>
+            </div>
+            <div className={styles.field}>
+              <p className="type-caption">On-screen text</p>
+              <p className="type-small">{row.onScreenText}</p>
+            </div>
+            <div className={styles.field}>
+              <p className="type-caption">Voiceover</p>
+              <p className="type-small">{row.voiceover}</p>
+            </div>
+          </li>
+        ))}
+        <li className={`${styles.card} ${styles.totalCard}`}>
+          <p className="type-label">Total runtime</p>
+          <p className={`type-small tabular ${styles.seconds}`}>{shotListTotalSeconds}s</p>
+        </li>
+      </ul>
     </div>
   );
 }

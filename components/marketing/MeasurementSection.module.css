@@ -5,6 +5,12 @@
   background: var(--radar-color-surface);
 }
 
+@media (max-width: 767px) {
+  .scroll {
+    display: none;
+  }
+}
+
 .scroll:focus-visible {
   outline: 3px solid var(--radar-color-focus);
   outline-offset: var(--radar-focus-offset);
@@ -42,6 +48,34 @@
 
 .utm {
   word-break: break-all;
+}
+
+.cards {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .cards {
+    display: flex;
+    flex-direction: column;
+    gap: var(--radar-space-4);
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--radar-space-2);
+  padding: var(--radar-space-4);
+  background: var(--radar-color-surface);
+  border: 1px solid var(--radar-color-border);
+  border-radius: var(--radar-radius-large);
+}
+
+.utmCard {
+  display: block;
+  word-break: break-all;
+  color: var(--radar-color-text-secondary);
 }
 
 .notes {

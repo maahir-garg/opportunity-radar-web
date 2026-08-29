@@ -10,10 +10,12 @@ export function WhyItWorks() {
       <ol className={styles.grid}>
         {whyItWorks.map((point, index) => (
           <li className={styles.card} key={point.title}>
-            <span className={`type-caption tabular ${styles.index}`} aria-hidden="true">
-              {String(index + 1).padStart(2, '0')}
-            </span>
-            <h3 className="type-h3">{point.title}</h3>
+            <div className={styles.heading}>
+              <span className={`type-caption tabular ${styles.index}`} aria-hidden="true">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <h3 className={`type-h3 ${styles.title}`}>{point.title}</h3>
+            </div>
             <p className={`type-small ${styles.body}`}>{point.body}</p>
           </li>
         ))}

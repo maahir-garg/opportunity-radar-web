@@ -1,5 +1,7 @@
+import Image from 'next/image';
+import { RadarArcs } from '@/components/primitives/RadarArcs';
+import { RadarMark } from '@/components/primitives/RadarMark';
 import { SectionHeader } from '@/components/primitives/SectionHeader';
-import { VisuallyHidden } from '@/components/primitives/VisuallyHidden';
 import {
   instagramSampleCaption,
   outreachEmail,
@@ -7,27 +9,6 @@ import {
   telegramSamplePost,
 } from '@/lib/content/campaign';
 import styles from './AssetSamples.module.css';
-
-/** A QR placeholder drawn as a simple repeating square pattern, never a real QR image. */
-function QrPlaceholder() {
-  const cells = [1, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1];
-  return (
-    <svg
-      className={styles.qrSvg}
-      viewBox="0 0 4 4"
-      role="img"
-      aria-label="QR placeholder square graphic, not a scannable code"
-    >
-      {cells.map((filled, index) => {
-        const x = index % 4;
-        const y = Math.floor(index / 4);
-        return filled ? (
-          <rect key={index} x={x} y={y} width="1" height="1" fill="currentColor" />
-        ) : null;
-      })}
-    </svg>
-  );
-}
 
 /** Written-out sample artefacts: Telegram post, Instagram caption, outreach email, poster. */
 export function AssetSamples() {
@@ -75,17 +56,34 @@ export function AssetSamples() {
         </article>
 
         <article className={`${styles.card} ${styles.poster}`}>
-          <p className="type-caption">Poster concept</p>
+          <p className="type-caption">Poster concept · A3 print size</p>
           <div className={styles.posterFrame}>
-            <p className={`type-h3 ${styles.posterHeadline}`}>{posterConcept.headline}</p>
-            <p className={`type-small ${styles.posterBody}`}>{posterConcept.body}</p>
-            <div className={styles.posterQr}>
-              <QrPlaceholder />
-              <span className="type-caption">{posterConcept.qrLabel}</span>
+            <div className={styles.posterArcs} aria-hidden="true">
+              <RadarArcs className={styles.posterArcsSvg} />
             </div>
-            <p className={`type-caption ${styles.posterFooter}`}>{posterConcept.footer}</p>
+            <div className={styles.posterContent}>
+              <RadarMark withWordmark />
+              <div className={styles.posterCopy}>
+                <p className={`type-h1 ${styles.posterHeadline}`}>{posterConcept.headline}</p>
+                <p className={`type-body ${styles.posterBody}`}>{posterConcept.body}</p>
+              </div>
+              <div className={styles.posterQr}>
+                <div className={styles.posterQrTile}>
+                  <Image
+                    src="/waitlist-qr.svg"
+                    alt="QR code linking to the Radar pilot waitlist page"
+                    width={240}
+                    height={240}
+                    className={styles.posterQrImage}
+                    unoptimized
+                  />
+                </div>
+                <p className={`type-label ${styles.posterQrCta}`}>{posterConcept.qrCta}</p>
+                <p className={`type-caption ${styles.posterQrUrl}`}>{posterConcept.qrUrl}</p>
+              </div>
+              <p className={`type-caption ${styles.posterFooter}`}>{posterConcept.footer}</p>
+            </div>
           </div>
-          <VisuallyHidden>Portrait poster mock-up, A3 print size</VisuallyHidden>
         </article>
       </div>
     </div>

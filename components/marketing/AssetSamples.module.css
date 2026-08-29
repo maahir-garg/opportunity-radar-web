@@ -62,47 +62,97 @@
 }
 
 .posterFrame {
+  position: relative;
   width: 100%;
-  max-width: 70%;
-  aspect-ratio: 3 / 4;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: var(--radar-space-3);
-  padding: var(--radar-space-6);
-  background: var(--radar-color-canvas);
-  border: 1px solid var(--radar-color-border);
-  border-radius: var(--radar-radius-medium);
+  max-width: 22rem;
+  aspect-ratio: 297 / 420;
+  overflow: hidden;
+  background: var(--radar-color-action-primary);
+  border-radius: var(--radar-radius-large);
   margin-inline: auto;
 }
 
+.posterArcs {
+  position: absolute;
+  inset-inline: 0;
+  inset-block-start: 58%;
+  inset-block-end: 0;
+  overflow: hidden;
+}
+
+.posterArcsSvg {
+  color: var(--radar-color-text-inverse);
+  opacity: 0.16;
+}
+
+.posterContent {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  padding: var(--radar-space-6) var(--radar-space-5);
+  color: var(--radar-color-text-inverse);
+}
+
+.posterCopy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--radar-space-2);
+  margin-block-start: var(--radar-space-6);
+}
+
 .posterHeadline {
-  color: var(--radar-color-text-primary);
+  color: var(--radar-color-text-inverse);
 }
 
 .posterBody {
-  color: var(--radar-color-text-secondary);
+  color: var(--radar-color-text-inverse);
+  opacity: 0.8;
 }
 
 .posterQr {
+  margin-block-start: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--radar-space-2);
-  color: var(--radar-color-text-secondary);
 }
 
-.qrSvg {
-  width: var(--radar-space-20);
-  height: var(--radar-space-20);
-  color: var(--radar-color-text-primary);
+.posterQrTile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--radar-space-2);
   background: var(--radar-color-surface);
-  border: 1px solid var(--radar-color-border-strong);
-  padding: var(--radar-space-1);
+  border-radius: var(--radar-radius-medium);
+}
+
+.posterQrImage {
+  width: 100%;
+  max-width: var(--radar-space-20);
+  height: auto;
+  display: block;
+}
+
+.posterQrCta {
+  color: var(--radar-color-text-inverse);
+  text-align: center;
+}
+
+.posterQrUrl {
+  color: var(--radar-color-text-inverse);
+  opacity: 0.75;
+  text-align: center;
+  overflow-wrap: anywhere;
 }
 
 .posterFooter {
-  color: var(--radar-color-text-secondary);
+  color: var(--radar-color-text-inverse);
+  opacity: 0.6;
+  text-align: center;
+  margin-block-start: var(--radar-space-4);
 }
 
 .illustrative {

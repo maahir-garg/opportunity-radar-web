@@ -20,14 +20,14 @@ export const privacySections: ProseBlock[] = [
   {
     heading: 'What the sign-up form asks for',
     paragraphs: [
-      'Joining the pilot list on the landing page asks for a handful of things: a reserved handle, an email address, your year of study, your faculty, up to three interests, and two optional fields: how you heard about Radar, and a short note on what you miss out on most right now.',
+      'Joining the pilot list on the landing page asks for a handful of things: a reserved handle, an email address, your year of study, your faculty, up to three interests, and a few optional fields: how you heard about Radar (with a short free-text follow-up if you pick "Other"), and a short note on what you miss out on most right now.',
     ],
   },
   {
-    heading: 'What happens to it: nothing is stored',
+    heading: 'What happens to it: we store it for one purpose',
     paragraphs: [
-      'This is a prototype marketing site, not a live product. The form validates what you type and shows a confirmation in your own browser. That is the whole flow. There is no database behind it, no analytics vendor, no mailing-list provider, and no third-party tracking script anywhere on this site.',
-      'If we ever run a real pilot, we would build a proper sign-up with its own consent step and ask again, in plain language, exactly where the data goes and who can see it. Nothing here should be read as that consent.',
+      'We store what the form collects so we can do one thing with it: contact you about the Radar pilot. We do not use it for anything else, and we have not built any other use for it.',
+      'There is no analytics vendor and no third-party tracking script anywhere on this site, and we never sell or share what you tell us with anyone. You can ask us to have your entry deleted at any time, by replying to the email we send you or by writing to the contact we publish below before the pilot opens.',
     ],
   },
   {

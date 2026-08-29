@@ -263,7 +263,8 @@ export const shotListTotalSeconds = shotList.reduce((total, row) => total + row.
 export const posterConcept = {
   headline: 'Find your signal.',
   body: 'One weekly list of what’s closing soon, matched to your year and interests.',
-  qrLabel: 'QR placeholder: links to radar.nus/join',
+  qrCta: 'Scan to join the pilot',
+  qrUrl: 'opportunity-radar-web-signup.vercel.app/#waitlist',
   footer: 'Student-built for NUS students. Not an official NUS service.',
 };
 

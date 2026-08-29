@@ -45,6 +45,55 @@
   border-color: var(--radar-color-error-text);
 }
 
+/*
+ * A 3px offset outline on a bordered field reads as two stacked outlines and
+ * overpowers the form. Focus is drawn instead as a crisp 2px blue edge (the
+ * border plus a 1px ring) with a soft halo outside it. Box-shadow does not
+ * affect layout, so nothing shifts, and the indicator follows the field's own
+ * corner radius.
+ */
+.control:focus-visible {
+  outline: none;
+  border-color: var(--radar-color-focus);
+  box-shadow:
+    0 0 0 1px var(--radar-color-focus),
+    0 0 0 4px var(--radar-color-info-surface);
+}
+
+/*
+ * Grid-rows reveal for the "Other" free-text field: mounts closed (0fr) and
+ * a rAF in WaitlistForm.tsx flips data-open so this actually animates open
+ * instead of snapping in, without reserving a permanent gap while collapsed
+ * (the block is unmounted entirely once "Other" is deselected).
+ */
+.channelOtherReveal {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--radar-duration-slow) var(--radar-ease-standard);
+  /*
+   * Pull the follow-up closer than a normal field gap so it reads as part of
+   * the question above it rather than a separate one.
+   */
+  margin-block-start: calc((var(--radar-space-5) - var(--radar-space-3)) * -1);
+}
+
+.channelOtherReveal[data-open='true'] {
+  grid-template-rows: 1fr;
+}
+
+.channelOtherRevealInner {
+  overflow: hidden;
+  min-height: 0;
+  /*
+   * The reveal needs overflow:hidden to animate, but that also clips anything
+   * drawn outside the field's box, which is why the focus ring looked wrong
+   * here and fine on the textarea below. The padding gives the ring room
+   * inside the clip; the matching negative margin keeps the layout identical.
+   */
+  padding: var(--radar-space-2);
+  margin: calc(var(--radar-space-2) * -1);
+}
+
 .textarea {
   min-height: calc(var(--radar-size-tap-minimum) * 2);
   padding-block: var(--radar-space-3);
