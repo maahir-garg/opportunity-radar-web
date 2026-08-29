@@ -6,6 +6,12 @@ export type ScreenProps = {
   title: string;
   variant?: 'root' | 'child';
   withBottomNav?: boolean;
+  /**
+   * Overrides the default top-right glyph (the notification bell on a root
+   * screen, nothing on a child screen) — e.g. the info icon on the 30-day
+   * Radar screen. Pass null to force no icon.
+   */
+  topRightIcon?: ReactNode;
   children: ReactNode;
 };
 
@@ -22,7 +28,20 @@ const NAV = [
  * markup. There are no controls inside the phone, so nothing looks tappable
  * but dead.
  */
-export function Screen({ title, variant = 'root', withBottomNav = true, children }: ScreenProps) {
+export function Screen({
+  title,
+  variant = 'root',
+  withBottomNav = true,
+  topRightIcon,
+  children,
+}: ScreenProps) {
+  const rightIcon =
+    topRightIcon !== undefined
+      ? topRightIcon
+      : variant === 'root'
+        ? <Bell size={20} strokeWidth={1.75} aria-hidden="true" />
+        : null;
+
   return (
     <div className={styles.screen}>
       <div className={styles.topBar}>
@@ -30,9 +49,7 @@ export function Screen({ title, variant = 'root', withBottomNav = true, children
           <ArrowLeft size={20} strokeWidth={1.75} aria-hidden="true" className={styles.topIcon} />
         ) : null}
         <p className={`type-h3 ${styles.topTitle}`}>{title}</p>
-        {variant === 'root' ? (
-          <Bell size={20} strokeWidth={1.75} aria-hidden="true" className={styles.topIcon} />
-        ) : null}
+        {rightIcon ? <span className={styles.topIcon}>{rightIcon}</span> : null}
       </div>
 
       <div className={styles.body}>{children}</div>

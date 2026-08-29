@@ -19,9 +19,10 @@ export function Hero() {
             Find the opportunities worth your time.
           </h1>
           <p className={`type-body-large ${styles.lead}`}>
-            Radar brings NUS internships, research, competitions, exchanges, grants and talks into
-            one place, shows you a short list that fits your year and interests, explains why each
-            one matched, and turns the ones you save into a deadline plan.
+            Radar brings NUS internships, research, entrepreneurship, competitions, exchange
+            programmes, volunteering, talks and workshops, and scholarships and grants into one
+            place, shows you a short list that fits your year and interests, explains why each one
+            matched, and turns the ones you save into a deadline plan.
           </p>
           <div className={styles.actions}>
             <Button href="#waitlist" size="large">

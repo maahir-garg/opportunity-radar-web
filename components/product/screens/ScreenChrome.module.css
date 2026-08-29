@@ -21,6 +21,7 @@
 }
 
 .topIcon {
+  display: inline-flex;
   color: var(--radar-color-text-primary);
   flex: none;
 }

@@ -1,7 +1,7 @@
 .timeline {
   display: flex;
   flex-direction: column;
-  gap: var(--radar-space-3);
+  gap: var(--radar-space-4);
 }
 
 .legend {
@@ -17,143 +17,19 @@
 }
 
 .legendMark {
-  width: var(--radar-space-4);
-  height: 0;
-  border-block-start-width: 3px;
-  border-block-start-style: solid;
+  width: var(--radar-space-3);
+  height: var(--radar-space-3);
   border-radius: var(--radar-radius-full);
+  flex: none;
 }
 
 .legendConfirmed {
-  border-block-start-color: var(--radar-color-action-primary);
+  background: var(--radar-color-action-primary);
 }
 
 .legendExpected {
-  border-block-start-style: dashed;
-  border-block-start-color: var(--radar-color-signal);
-}
-
-.graphic {
-  position: relative;
-  padding-block-end: var(--radar-space-2);
-}
-
-.axis {
-  position: relative;
-  height: var(--radar-space-5);
-}
-
-.tick {
-  position: absolute;
-  inset-block-start: 0;
-  inset-inline-start: var(--tick-offset);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--radar-space-1);
-}
-
-.tickLast {
-  align-items: flex-end;
-  transform: translateX(-100%);
-}
-
-.tickLine {
-  width: 1px;
-  height: var(--radar-space-2);
-  background: var(--radar-color-border-strong);
-}
-
-.tickLabel {
-  color: var(--radar-color-text-secondary);
-  white-space: nowrap;
-}
-
-.lanes {
-  position: relative;
-  /*
-   * Confirmed marks and expected bands share this one row and both hang from
-   * the baseline, so a point-in-time and a span read as the same timeline
-   * rather than two unrelated graphics.
-   */
-  height: var(--radar-space-5);
-  border-block-start: 1px solid var(--radar-color-border-strong);
-}
-
-.confirmedMark {
-  position: absolute;
-  inset-block-start: 0;
-  inset-inline-start: var(--mark-offset);
-  width: 3px;
-  height: var(--radar-space-4);
-  border-end-start-radius: var(--radar-radius-full);
-  border-end-end-radius: var(--radar-radius-full);
-  background: var(--radar-color-action-primary);
-  transform: translateX(-1px);
-}
-
-.expectedBand {
-  position: absolute;
-  inset-block-start: var(--radar-space-1);
-  inset-inline-start: var(--band-start);
-  width: var(--band-width);
-  min-width: var(--radar-space-8);
-  height: var(--radar-space-2);
-  border-block: 2px dashed var(--radar-color-signal);
-  border-inline-start: 2px dashed var(--radar-color-signal);
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  color: var(--radar-color-signal-text);
-}
-
-.bandArrow {
-  /* The chevron replaces a right edge: the window runs past the 30-day axis. */
-  margin-inline-end: calc(var(--radar-space-2) * -1);
-  flex: none;
-}
-
-.list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--radar-space-3);
-}
-
-.row {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--radar-space-3);
-}
-
-.rowMark {
-  flex: none;
-  width: var(--radar-space-1);
-  align-self: stretch;
-  border-radius: var(--radar-radius-full);
-  min-height: var(--radar-space-8);
-}
-
-.rowConfirmed {
-  background: var(--radar-color-action-primary);
-}
-
-.rowExpected {
-  background: none;
-  border-inline-start: 3px dashed var(--radar-color-signal);
-}
-
-.rowText {
-  display: flex;
-  flex-direction: column;
-  gap: var(--radar-space-1);
-}
-
-.rowTitle {
-  color: var(--radar-color-text-primary);
-}
-
-.rowDate {
-  color: var(--radar-color-text-secondary);
+  background: var(--radar-color-surface);
+  border: 2px dashed var(--radar-color-signal);
 }
 
 .group {
@@ -163,6 +39,64 @@
 }
 
 .groupTitle {
+  color: var(--radar-color-text-secondary);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: var(--radar-space-6) 1fr;
+  gap: var(--radar-space-3);
+}
+
+.rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dot {
+  width: var(--radar-space-3);
+  height: var(--radar-space-3);
+  border-radius: var(--radar-radius-full);
+  margin-block-start: var(--radar-space-1);
+  flex: none;
+}
+
+.dotConfirmed {
+  background: var(--radar-color-action-primary);
+}
+
+.dotExpected {
+  background: var(--radar-color-surface);
+  border: 2px dashed var(--radar-color-signal);
+}
+
+.line {
+  flex: 1;
+  width: 2px;
+  min-height: var(--radar-space-4);
+  background: var(--radar-color-border);
+  margin-block: var(--radar-space-1);
+}
+
+.rowBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--radar-space-1);
+  padding-block-end: var(--radar-space-4);
+  min-width: 0;
+}
+
+.rowTitle {
+  color: var(--radar-color-text-primary);
+}
+
+.rowDate {
   color: var(--radar-color-text-secondary);
 }
 

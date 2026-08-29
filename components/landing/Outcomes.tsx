@@ -101,7 +101,7 @@ const OUTCOMES = [
   {
     goal: 'Goal 1: Discover',
     title: 'One place instead of six channels.',
-    body: 'Internships, research, competitions, exchanges, volunteering, talks, grants and ventures share one catalogue and one taxonomy. Search works the ordinary way, and the feed keeps the list short enough to actually read.',
+    body: 'Internships, research, entrepreneurship, competitions, exchange programmes, volunteering, talks and workshops, and scholarships and grants share one catalogue and one taxonomy. Search works the ordinary way, and the feed keeps the list short enough to actually read.',
     Visual: DiscoverVisual,
   },
   {
