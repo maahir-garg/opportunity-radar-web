@@ -68,31 +68,57 @@ The "How did you hear about Radar?" field reveals a short free-text follow-up,
 
 ## Sign-up storage
 
-`POST /api/waitlist` stores nothing until you configure one of two providers,
+`POST /api/waitlist` stores nothing until you configure one provider,
 resolved in this order by [`lib/waitlist-store.ts`](lib/waitlist-store.ts):
 
-1. **Upstash Redis / Vercel KV** (`KV_REST_API_URL` + `KV_REST_API_TOKEN`):
-   recommended. In the Vercel dashboard: **Storage → Create Database**, add the
-   Upstash-backed KV integration to this project, and Vercel injects both
-   environment variables into the project automatically, no secrets to copy by
-   hand. Each accepted submission is `RPUSH`ed as a JSON string onto
-   `waitlist:submissions`, and the handle is reserved with `SETNX` first so the
-   same handle can never silently claim two entries.
-2. **A generic webhook** (`WAITLIST_WEBHOOK_URL`): every accepted submission is
+1. **Email via Resend** (`RESEND_API_KEY` + `WAITLIST_NOTIFY_EMAIL`): the
+   fastest way to just get notified. [Sign up free at resend.com](https://resend.com),
+   copy the API key from the dashboard, and set:
+   - `RESEND_API_KEY` — the key from the Resend dashboard.
+   - `WAITLIST_NOTIFY_EMAIL` — the address you want notified.
+   - `WAITLIST_FROM_EMAIL` — optional, defaults to `Radar Waitlist <onboarding@resend.dev>`.
+
+   Without a verified sending domain in Resend, you can only send **from**
+   `onboarding@resend.dev` and only deliver **to** the email address your
+   Resend account was created with. That is enough to notify yourself; if you
+   later verify your own domain in Resend, set `WAITLIST_FROM_EMAIL` to send
+   from your own address instead. Each sign-up arrives as a plain-text email
+   with the handle, email, year, faculty, interests, referral channel and note.
+2. **Upstash Redis / Vercel KV** (`KV_REST_API_URL` + `KV_REST_API_TOKEN`):
+   for a structured, queryable list instead of an inbox. In the Vercel
+   dashboard: **Storage → Create Database**, add the Upstash-backed KV
+   integration to this project, and Vercel injects both environment variables
+   automatically, no secrets to copy by hand. Each accepted submission is
+   `RPUSH`ed as a JSON string onto `waitlist:submissions`, and the handle is
+   reserved with `SETNX` first so the same handle can never silently claim two
+   entries. Takes priority over email if both are configured.
+3. **A generic webhook** (`WAITLIST_WEBHOOK_URL`): every accepted submission is
    POSTed as JSON to this URL. Point it at Zapier, Make, n8n, a Discord/Slack
-   incoming webhook, or an endpoint you write yourself. Only used when the KV
-   variables above are not set.
-3. **Neither configured**: nothing is stored. In production the API returns a
+   incoming webhook, or an endpoint you write yourself. Only used when neither
+   option above is configured.
+4. **None configured**: nothing is stored. In production the API returns a
    clear `503` (`"We cannot take sign-ups at the moment. Please try again
    later."`) instead of ever telling a visitor they are on the list when nothing
    was recorded. In local development it logs a warning and still returns
    success, so `npm run dev` keeps working without any setup.
 
-See [`.env.example`](.env.example) for both variable pairs with comments. The
-storage call has a 5-second timeout and never throws past the route handler, so
-a slow or unreachable provider degrades to the "not stored" path above rather
-than a 500. The route never logs a raw email address or the submission itself,
-only outcome counts.
+See [`.env.example`](.env.example) for all variables with comments. Every
+provider call has a 5-second timeout and never throws past the route handler,
+so a slow or unreachable provider degrades to the "not stored" path above
+rather than a 500. The route never logs a raw email address or the submission
+itself, only outcome counts and which provider handled it. The one deliberate
+exception is the email provider itself, which by design sends the submission
+to the inbox you configured.
+
+### Setting it up on the deployed site
+
+The env vars above must be set in the Vercel project, not just locally:
+**Project → Settings → Environment Variables**, add the ones for whichever
+provider you chose, then redeploy (Vercel does this automatically on the next
+push, or trigger one manually from the Deployments tab). Adding the KV
+integration through **Storage → Create Database** sets its two variables for
+you; for email or webhook, add `RESEND_API_KEY` + `WAITLIST_NOTIFY_EMAIL` (or
+`WAITLIST_WEBHOOK_URL`) yourself as plain environment variables.
 
 ## How it is built
 
