@@ -15,6 +15,7 @@ import {
 export const MIN_INTERESTS = 1;
 export const MAX_INTERESTS = 3;
 export const NOTE_MAX_LENGTH = 300;
+export const CHANNEL_OTHER_MAX_LENGTH = 80;
 
 export const YEAR_OPTIONS = [
   { value: 'year-1', label: 'Year 1' },
@@ -70,6 +71,7 @@ export type WaitlistSubmission = {
   faculty: FacultyOption;
   interests: CategoryId[];
   channel?: ChannelOption;
+  channelOther?: string;
   note?: string;
   consent: true;
 };
@@ -160,6 +162,20 @@ export function validateWaitlist(input: unknown): WaitlistValidationResult {
     }
   }
 
+  // Channel "Other": free text, only meaningful when channel is literally
+  // 'Other'. Trimmed and capped; ignored entirely (never validated, never
+  // carried through) for every other channel value, including when the
+  // client sends a stray leftover value from a previous selection.
+  const channelOtherRaw = typeof data.channelOther === 'string' ? data.channelOther.trim() : '';
+  let channelOther: string | undefined;
+  if (channel === 'Other') {
+    if (channelOtherRaw.length > CHANNEL_OTHER_MAX_LENGTH) {
+      errors.channelOther = `Keep this to ${CHANNEL_OTHER_MAX_LENGTH} characters or fewer.`;
+    } else if (channelOtherRaw) {
+      channelOther = channelOtherRaw;
+    }
+  }
+
   // Note: optional, capped length.
   const noteRaw = typeof data.note === 'string' ? data.note : '';
   if (noteRaw.length > NOTE_MAX_LENGTH) {
@@ -186,6 +202,7 @@ export function validateWaitlist(input: unknown): WaitlistValidationResult {
       faculty: faculty as FacultyOption,
       interests,
       channel,
+      channelOther,
       note,
       consent: true,
     },

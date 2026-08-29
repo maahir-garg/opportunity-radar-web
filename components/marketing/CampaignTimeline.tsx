@@ -58,6 +58,31 @@ export function CampaignTimeline() {
           </tbody>
         </table>
       </div>
+      <ul className={styles.cards}>
+        {timeline.map((row) => {
+          const activeChannels = timelineChannelOrder.filter((channel) => row.cells[channel.id]);
+          return (
+            <li className={styles.card} key={row.week}>
+              <div className={styles.cardHead}>
+                <span className="type-label">{row.week}</span>
+                <span className={`type-caption ${styles.cardPhase}`}>{row.label}</span>
+              </div>
+              {activeChannels.length > 0 ? (
+                <dl className={styles.cardList}>
+                  {activeChannels.map((channel) => (
+                    <div className={styles.cardRow} key={channel.id}>
+                      <dt className={`type-caption ${styles.cardTerm}`}>{channel.label}</dt>
+                      <dd className="type-small">{row.cells[channel.id]}</dd>
+                    </div>
+                  ))}
+                </dl>
+              ) : (
+                <p className={`type-small ${styles.cardEmpty}`}>Nothing scheduled this week.</p>
+              )}
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 }

@@ -26,11 +26,36 @@
   border-radius: var(--radar-radius-large);
 }
 
-.icon {
-  width: var(--radar-size-icon-navigation);
-  height: var(--radar-size-icon-navigation);
+.heading {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--radar-space-3);
+}
+
+.iconWrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: var(--radar-space-10);
+  height: var(--radar-space-10);
+  border-radius: var(--radar-radius-medium);
+  background: var(--radar-color-surface-subdued);
   color: var(--radar-color-signal-text);
+}
+
+.icon {
+  width: var(--radar-size-icon-default);
+  height: var(--radar-size-icon-default);
   flex-shrink: 0;
+}
+
+.title {
+  color: var(--radar-color-text-primary);
+  min-width: 0;
+  /* Centre the first line against the tile by padding the title, not by
+     pulling the tile up, so the row's box matches what you see. */
+  padding-block-start: calc((var(--radar-space-10) - var(--radar-line-height-heading-3)) / 2);
 }
 
 .details {

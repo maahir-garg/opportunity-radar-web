@@ -5,6 +5,12 @@
   background: var(--radar-color-surface);
 }
 
+@media (max-width: 767px) {
+  .scroller {
+    display: none;
+  }
+}
+
 .scroller:focus-visible {
   outline: 3px solid var(--radar-color-focus);
   outline-offset: var(--radar-focus-offset);
@@ -49,4 +55,49 @@
 
 .table tbody td {
   color: var(--radar-color-text-body);
+}
+
+.cardsCaption {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .cardsCaption {
+    display: block;
+    color: var(--radar-color-text-secondary);
+    margin-block-end: var(--radar-space-4);
+  }
+}
+
+.cards {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .cards {
+    display: flex;
+    flex-direction: column;
+    gap: var(--radar-space-4);
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--radar-space-3);
+  padding: var(--radar-space-4);
+  background: var(--radar-color-surface);
+  border: 1px solid var(--radar-color-border);
+  border-radius: var(--radar-radius-large);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--radar-space-1);
+}
+
+.field p:first-child {
+  color: var(--radar-color-text-secondary);
+  letter-spacing: 0.04em;
 }

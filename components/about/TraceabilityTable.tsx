@@ -10,38 +10,61 @@ export type TraceabilityTableProps = {
  * Wrapped in a scrollable region so it never forces horizontal page scroll
  * at narrow widths, per docs/BUILD-CONTRACT.md §3.
  */
+const CAPTION_TEXT =
+  'How each product goal maps to supporting features, the surfaces that carry them, and what ' +
+  'we would look for while observing a student use the prototype.';
+
 export function TraceabilityTable({ rows }: TraceabilityTableProps) {
   return (
-    <div
-      className={styles.scroller}
-      tabIndex={0}
-      role="region"
-      aria-label="Requirement traceability: goal, features, surfaces and observable outcome"
-    >
-      <table className={styles.table}>
-        <caption className={`type-small ${styles.caption}`}>
-          How each product goal maps to supporting features, the surfaces that carry them, and what
-          we would look for while observing a student use the prototype.
-        </caption>
-        <thead>
-          <tr>
-            <th scope="col">Goal</th>
-            <th scope="col">Features</th>
-            <th scope="col">Main surfaces</th>
-            <th scope="col">What we would observe</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((row) => (
-            <tr key={row.goal}>
-              <th scope="row">{row.goal}</th>
-              <td>{row.features}</td>
-              <td>{row.surfaces}</td>
-              <td>{row.observe}</td>
+    <div>
+      <div
+        className={styles.scroller}
+        tabIndex={0}
+        role="region"
+        aria-label="Requirement traceability: goal, features, surfaces and observable outcome"
+      >
+        <table className={styles.table}>
+          <caption className={`type-small ${styles.caption}`}>{CAPTION_TEXT}</caption>
+          <thead>
+            <tr>
+              <th scope="col">Goal</th>
+              <th scope="col">Features</th>
+              <th scope="col">Main surfaces</th>
+              <th scope="col">What we would observe</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {rows.map((row) => (
+              <tr key={row.goal}>
+                <th scope="row">{row.goal}</th>
+                <td>{row.features}</td>
+                <td>{row.surfaces}</td>
+                <td>{row.observe}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p className={`type-small ${styles.cardsCaption}`}>{CAPTION_TEXT}</p>
+      <ul className={styles.cards}>
+        {rows.map((row) => (
+          <li className={styles.card} key={row.goal}>
+            <p className="type-label">{row.goal}</p>
+            <div className={styles.field}>
+              <p className="type-caption">Features</p>
+              <p className="type-small">{row.features}</p>
+            </div>
+            <div className={styles.field}>
+              <p className="type-caption">Main surfaces</p>
+              <p className="type-small">{row.surfaces}</p>
+            </div>
+            <div className={styles.field}>
+              <p className="type-caption">What we would observe</p>
+              <p className="type-small">{row.observe}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

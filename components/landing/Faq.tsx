@@ -28,7 +28,7 @@ const QUESTIONS = [
   {
     question: 'What happens to my email?',
     answer:
-      'Nothing is stored by this site. The sign-up form validates your details and confirms in your browser; there is no database, no mailing-list provider and no third-party tracking here. If we run a real pilot we will ask for your consent again first.',
+      'We store what the form collects so we can contact you about the Radar pilot, and nothing else. There is no analytics vendor and no third-party tracking here, we never sell or share your details, and you can ask us to have your entry deleted at any time. See the privacy page for the full picture.',
   },
   {
     question: 'When can I use it?',

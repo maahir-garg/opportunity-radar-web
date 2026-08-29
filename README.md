@@ -50,16 +50,49 @@ deployment is fully functional.
 
 ## The sign-up form
 
-The assignment states the form "doesn't have to actually save any data", and this
-one deliberately does not. `POST /api/waitlist` validates the submission with the
-same [`validateWaitlist`](lib/waitlist.ts) function the client uses, returns a
-success or a field-level error map, and **persists nothing** — no database, no
-mailing-list provider, no analytics. `/privacy` says so in plain language.
+The assignment only requires the form to collect a visitor's information, but this
+one actually stores it once you configure a provider (see "Sign-up storage" below).
+`POST /api/waitlist` validates the submission with the same
+[`validateWaitlist`](lib/waitlist.ts) function the client uses, hands a valid
+submission to the storage layer, and returns a success or a field-level error map.
+`/privacy` describes what is and is not done with a stored entry.
 
 The form does implement the two tactics the course suggests for a pre-launch
 landing page: a stated scarcity ("the first pilot opens to 100 students" — our own
 plan, never a fabricated count of people who have already joined) and a
 **reserved handle**, checked against a local reserved list as you type.
+
+The "How did you hear about Radar?" field reveals a short free-text follow-up,
+`channelOther`, only when the visitor picks "Other": the attribution hook the
+`/marketing` page's measurement section refers to.
+
+## Sign-up storage
+
+`POST /api/waitlist` stores nothing until you configure one of two providers,
+resolved in this order by [`lib/waitlist-store.ts`](lib/waitlist-store.ts):
+
+1. **Upstash Redis / Vercel KV** (`KV_REST_API_URL` + `KV_REST_API_TOKEN`):
+   recommended. In the Vercel dashboard: **Storage → Create Database**, add the
+   Upstash-backed KV integration to this project, and Vercel injects both
+   environment variables into the project automatically, no secrets to copy by
+   hand. Each accepted submission is `RPUSH`ed as a JSON string onto
+   `waitlist:submissions`, and the handle is reserved with `SETNX` first so the
+   same handle can never silently claim two entries.
+2. **A generic webhook** (`WAITLIST_WEBHOOK_URL`): every accepted submission is
+   POSTed as JSON to this URL. Point it at Zapier, Make, n8n, a Discord/Slack
+   incoming webhook, or an endpoint you write yourself. Only used when the KV
+   variables above are not set.
+3. **Neither configured**: nothing is stored. In production the API returns a
+   clear `503` (`"We cannot take sign-ups at the moment. Please try again
+   later."`) instead of ever telling a visitor they are on the list when nothing
+   was recorded. In local development it logs a warning and still returns
+   success, so `npm run dev` keeps working without any setup.
+
+See [`.env.example`](.env.example) for both variable pairs with comments. The
+storage call has a 5-second timeout and never throws past the route handler, so
+a slow or unreachable provider degrades to the "not stored" path above rather
+than a 500. The route never logs a raw email address or the submission itself,
+only outcome counts.
 
 ## How it is built
 

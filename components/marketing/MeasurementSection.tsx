@@ -37,6 +37,14 @@ export function MeasurementSection() {
           </tbody>
         </table>
       </div>
+      <ul className={styles.cards}>
+        {utmRows.map((row) => (
+          <li className={styles.card} key={row.channel}>
+            <p className="type-label">{row.channel}</p>
+            <code className={`type-small tabular ${styles.utmCard}`}>{row.utm}</code>
+          </li>
+        ))}
+      </ul>
 
       <dl className={styles.notes}>
         <div className={styles.note}>

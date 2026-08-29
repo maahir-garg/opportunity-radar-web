@@ -35,8 +35,12 @@ export function ChannelGrid() {
           const Icon = ICONS[channel.icon] ?? Send;
           return (
             <li className={styles.card} key={channel.id}>
-              <Icon className={styles.icon} aria-hidden="true" />
-              <h3 className="type-h3">{channel.name}</h3>
+              <div className={styles.heading}>
+                <span className={styles.iconWrap} aria-hidden="true">
+                  <Icon className={styles.icon} aria-hidden="true" />
+                </span>
+                <h3 className={`type-h3 ${styles.title}`}>{channel.name}</h3>
+              </div>
               <dl className={styles.details}>
                 <div className={styles.row}>
                   <dt className="type-label">What we do</dt>
