@@ -1,7 +1,7 @@
-import { MapPin } from 'lucide-react';
-import { formatDateRange } from '@/lib/date';
+import { MapPin, ShieldCheck } from 'lucide-react';
+import { formatCheckedAt, formatDateRange } from '@/lib/date';
 import { getCategory } from '@/lib/data';
-import type { Opportunity } from '@/lib/types';
+import type { Opportunity, SourceStatus } from '@/lib/types';
 import { CategoryIcon } from './CategoryIcon';
 import { DeadlineBadge } from './DeadlineBadge';
 import { MatchIndicator } from './MatchIndicator';
@@ -28,6 +28,19 @@ const SOURCE_LABEL: Record<string, string> = {
   organiserVerified: 'Organiser verified',
   communitySubmitted: 'Community submitted',
   needsReview: 'Needs review',
+};
+
+/**
+ * Source-trust tone. Official and organiser-verified sources read as green
+ * (the same "match" teal used elsewhere for confidence); community
+ * submissions read neutral-informational; anything flagged for review reads
+ * amber, the same tone as a match blocker.
+ */
+const SOURCE_TONE_CLASS: Record<SourceStatus, string> = {
+  official: styles.sourceVerified,
+  organiserVerified: styles.sourceVerified,
+  communitySubmitted: styles.sourceCommunity,
+  needsReview: styles.sourceReview,
 };
 
 /**
@@ -65,8 +78,13 @@ export function OpportunityCard({
         {opportunity.title}
       </Title>
 
-      <p className={`type-small ${styles.organiser}`}>
-        {opportunity.organiser} · {SOURCE_LABEL[opportunity.source.status] ?? opportunity.source.label}
+      <p className={`type-small ${styles.organiser}`}>{opportunity.organiser}</p>
+
+      <p
+        className={`type-small ${styles.sourceBadge} ${SOURCE_TONE_CLASS[opportunity.source.status]}`}
+      >
+        <ShieldCheck size={14} strokeWidth={1.75} aria-hidden="true" />
+        <span>{SOURCE_LABEL[opportunity.source.status] ?? opportunity.source.label}</span>
       </p>
 
       {withSummary ? <p className={`type-small ${styles.summary}`}>{opportunity.summary}</p> : null}
@@ -104,6 +122,19 @@ export function OpportunityCard({
       {showRating && opportunity.rating.count >= 3 ? (
         <ReviewSummary rating={opportunity.rating} className={styles.rating} />
       ) : null}
+
+      <div className={styles.footer}>
+        <p className={`type-caption ${styles.checked}`}>
+          {formatCheckedAt(opportunity.source.lastChecked)}
+        </p>
+        <span
+          className={`type-small ${styles.saveButton} ${
+            opportunity.progress.status === 'saved' ? styles.saved : ''
+          }`}
+        >
+          {opportunity.progress.status === 'saved' ? 'Saved' : 'Save'}
+        </span>
+      </div>
     </article>
   );
 }

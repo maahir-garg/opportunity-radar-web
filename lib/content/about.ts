@@ -8,7 +8,7 @@
  */
 
 export const aboutIntro = {
-  lead: 'Radar is the decision layer that sits above the places NUS opportunities already live. It does not replace application portals or organiser pages. It gathers internships, research, competitions, exchanges, grants and talks into one profile-aware list, explains why each one fits, and helps you act before the deadline.',
+  lead: 'Radar is the decision layer that sits above the places NUS opportunities already live. It does not replace application portals or organiser pages. It gathers internships, research, entrepreneurship, competitions, exchange programmes, volunteering, talks and workshops, and scholarships and grants into one profile-aware list, explains why each one fits, and helps you act before the deadline.',
 } as const;
 
 export const productStory: { overline: string; title: string; paragraphs: string[] } = {
@@ -101,7 +101,7 @@ export const features: Feature[] = [
     icon: 'list-checks',
     title: 'Explainable match',
     description:
-      'Every match carries a plain-language label and a breakdown of what fits, what is unknown, and what might block eligibility, never a chance of acceptance.',
+      'Every match carries a plain-language label and a "Why this matches" breakdown of what fits your profile and what we could not confirm, never a chance of acceptance.',
   },
   {
     id: 'F4',
@@ -130,7 +130,7 @@ export const features: Feature[] = [
 ];
 
 export const featuresNote =
-  'A lock-screen widget that surfaces one saved opportunity is on our list as a stretch goal. It is not part of the six features above and will not be built until this MVP works end to end.';
+  'A lock-screen widget that surfaces one saved opportunity is a stretch goal beyond the six features above. A working preview already exists in the prototype (Profile → lock-screen widget), though it is not wired to real OS push notifications.';
 
 export type TraceabilityRow = {
   goal: string;

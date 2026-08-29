@@ -58,8 +58,8 @@ export function WhyMatchPanel({ match, className }: WhyMatchPanelProps) {
     <div className={classNames}>
       <MatchIndicator match={match} />
       <p className={`type-small ${styles.helper}`}>{match.disclaimer}</p>
-      <Group title="What fits" items={match.reasons} icon="check" />
-      <Group title="What Radar does not know" items={match.missing} icon="help" />
+      <Group title="What fits your profile" items={match.reasons} icon="check" />
+      <Group title="Unknown - we could not confirm" items={match.missing} icon="help" />
       <Group title="What could block you" items={match.blockers} icon="alert" />
       <p className={`type-caption ${styles.note}`}>
         Matching uses only the profile details you give Radar. You can change or remove any of them.

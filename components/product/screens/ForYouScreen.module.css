@@ -2,6 +2,11 @@
   color: var(--radar-color-text-secondary);
 }
 
+.editLink {
+  color: var(--radar-color-text-link);
+  font-weight: var(--radar-font-weight-semibold);
+}
+
 .forecastCard {
   display: flex;
   align-items: center;

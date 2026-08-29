@@ -1,22 +1,37 @@
+import { X } from 'lucide-react';
 import { getOpportunity } from '@/lib/data';
 import { WhyMatchPanel } from '../WhyMatchPanel';
-import { Screen } from './ScreenChrome';
+import { ForYouScreen } from './ForYouScreen';
 import styles from './WhyMatchScreen.module.css';
 
 const opportunity = getOpportunity('proto-research-hcai');
 
-/** The sheet behind every match number. */
+/**
+ * The sheet behind every match number. In the real product this is a
+ * bottom-sheet dialog layered over whichever screen the student was already
+ * on (For You, here) — never a full-page navigation target — so the
+ * background screen and its bottom nav stay visible and dimmed behind it,
+ * and the opportunity itself is not re-introduced inside the sheet.
+ */
 export function WhyMatchScreen() {
   if (!opportunity?.match) return null;
 
   return (
-    <Screen title="Why this matches" variant="child" withBottomNav={false}>
-      <div className={styles.header}>
-        <p className={`type-caption ${styles.overline}`}>Opportunity</p>
-        <p className={`type-title ${styles.title}`}>{opportunity.title}</p>
-        <p className={`type-small ${styles.organiser}`}>{opportunity.organiser}</p>
+    <div className={styles.stage}>
+      <div className={styles.background} aria-hidden="true">
+        <ForYouScreen />
       </div>
-      <WhyMatchPanel match={opportunity.match} />
-    </Screen>
+      <div className={styles.backdrop} aria-hidden="true" />
+      <div className={styles.sheet} role="dialog" aria-label="Why this matches">
+        <span className={styles.handle} aria-hidden="true" />
+        <div className={styles.sheetHeader}>
+          <p className={`type-h3 ${styles.sheetTitle}`}>Why this matches</p>
+          <X size={20} strokeWidth={1.75} aria-hidden="true" className={styles.closeIcon} />
+        </div>
+        <div className={styles.sheetBody}>
+          <WhyMatchPanel match={opportunity.match} />
+        </div>
+      </div>
+    </div>
   );
 }

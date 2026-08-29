@@ -1,19 +1,61 @@
-.header {
+.stage {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+.background {
+  position: absolute;
+  inset: 0;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background: color-mix(in srgb, var(--radar-navy-950) 55%, transparent);
+}
+
+.sheet {
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--radar-space-1);
-  padding-block-end: var(--radar-space-4);
-  border-block-end: 1px solid var(--radar-color-border);
+  gap: var(--radar-space-3);
+  max-height: 82%;
+  background: var(--radar-color-surface);
+  border-radius: var(--radar-radius-sheet) var(--radar-radius-sheet) 0 0;
+  box-shadow: var(--radar-shadow-level-2);
+  padding: var(--radar-space-3) var(--radar-space-4) var(--radar-space-5);
 }
 
-.overline {
-  color: var(--radar-color-text-secondary);
+.handle {
+  align-self: center;
+  flex: none;
+  width: var(--radar-space-8);
+  height: 0.25rem;
+  border-radius: var(--radar-radius-full);
+  background: var(--radar-color-border-strong);
 }
 
-.title {
+.sheetHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--radar-space-3);
+  flex: none;
+}
+
+.sheetTitle {
   color: var(--radar-color-text-primary);
 }
 
-.organiser {
+.closeIcon {
+  flex: none;
   color: var(--radar-color-text-secondary);
+}
+
+.sheetBody {
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }

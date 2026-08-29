@@ -29,6 +29,30 @@
   color: var(--radar-color-text-secondary);
 }
 
+.sourceBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--radar-space-1);
+  padding: var(--radar-space-1) var(--radar-space-2);
+  border-radius: var(--radar-radius-full);
+  font-weight: var(--radar-font-weight-semibold);
+}
+
+.sourceVerified {
+  background: var(--radar-color-match-surface);
+  color: var(--radar-color-match-text);
+}
+
+.sourceCommunity {
+  background: var(--radar-color-info-surface);
+  color: var(--radar-color-info-text);
+}
+
+.sourceReview {
+  background: var(--radar-color-warning-surface);
+  color: var(--radar-color-warning-text);
+}
+
 .summary {
   color: var(--radar-color-text-body);
 }
@@ -77,4 +101,31 @@
 
 .rating {
   margin-block-start: var(--radar-space-1);
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--radar-space-3);
+  width: 100%;
+  margin-block-start: var(--radar-space-1);
+}
+
+.checked {
+  color: var(--radar-color-text-secondary);
+}
+
+.saveButton {
+  flex: none;
+  padding: var(--radar-space-1) var(--radar-space-4);
+  border-radius: var(--radar-radius-full);
+  background: var(--radar-color-action-primary);
+  color: var(--radar-color-action-on-primary);
+  font-weight: var(--radar-font-weight-semibold);
+}
+
+.saved {
+  background: var(--radar-color-surface-subdued);
+  color: var(--radar-color-text-secondary);
 }

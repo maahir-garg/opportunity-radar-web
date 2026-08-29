@@ -1,4 +1,4 @@
-import { TriangleAlert } from 'lucide-react';
+import { Target, TriangleAlert } from 'lucide-react';
 import type { OpportunityMatch } from '@/lib/types';
 import styles from './MatchIndicator.module.css';
 
@@ -9,8 +9,9 @@ export type MatchIndicatorProps = {
 };
 
 /**
- * "95% · Strong match". Never a circular progress ring, never a number on its
- * own. A known eligibility blocker overrides a superficially high label.
+ * A small target glyph before "95% Strong match". Never a circular progress
+ * ring, never a number on its own. A known eligibility blocker overrides a
+ * superficially high label.
  */
 export function MatchIndicator({ match, size = 'default', className }: MatchIndicatorProps) {
   const hasBlocker = match.blockers.length > 0;
@@ -34,10 +35,8 @@ export function MatchIndicator({ match, size = 'default', className }: MatchIndi
 
   return (
     <p className={`${classNames} type-label`}>
+      <Target size={16} strokeWidth={1.75} aria-hidden="true" className={styles.icon} />
       <span className={`${styles.score} tabular`}>{match.score}%</span>
-      <span aria-hidden="true" className={styles.dot}>
-        ·
-      </span>
       <span>{match.label}</span>
     </p>
   );
