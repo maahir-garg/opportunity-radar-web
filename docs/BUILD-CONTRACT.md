@@ -10,7 +10,9 @@ A **public marketing website** for *NUS Opportunity Radar* (short name: **Radar*
 built for CS3216 Assignment 1:
 
 - **Milestone 10** — a publicly accessible landing page with a sign-up form for
-  users to indicate interest (the form does not need to persist data).
+  users to indicate interest. The brief does not require the form to persist
+  data; ours does anyway, through a provider layer (see §9 and the README), so
+  a real sign-up is never silently dropped.
 - **Milestone 11** — a small marketing campaign, published as a page on the site.
 
 It is **not** the mobile product itself, and **we are not rebuilding the app** —
@@ -74,7 +76,11 @@ statically renderable except `app/api/waitlist/route.ts`.
 - One `<main>` per page, a skip link, correct landmark and heading order
   (exactly one `h1` per page, no skipped levels).
 - Focus visible everywhere: `:focus-visible { outline: 3px solid var(--radar-color-focus); outline-offset: var(--radar-focus-offset); }`
-  — never `outline: none` without a replacement ring.
+  — never `outline: none` without a replacement ring. Form controls are the one
+  exception: an offset outline on an already-bordered field reads as two
+  stacked outlines, so `.control:focus-visible` swaps it for a 2px blue edge
+  plus a soft halo drawn with `box-shadow`, which is at least as visible and
+  does not shift layout.
 - Interactive targets ≥ 44×44px (`--radar-size-tap-minimum`).
 - Icon-only controls have `aria-label`; decorative icons/SVGs get `aria-hidden="true"`.
 - Tabs use `role="tablist"/"tab"/"tabpanel"` with `aria-selected`, `aria-controls`,
@@ -467,9 +473,20 @@ details to judge competitiveness, and a clearly-marked placeholder contact
 `hello@opportunityradar.example`.
 
 ### `/api/waitlist` — POST
-Validates the payload, returns `200 { ok: true, message, handle }` or
-`400 { ok: false, errors }`. Persists nothing (a module-scope array at most,
-documented as non-persistent and reset on every deploy). Never log raw emails.
+Validates the payload, then hands it to `lib/waitlist-store.ts`, which writes
+to Upstash/Vercel KV (`KV_REST_API_URL` + `KV_REST_API_TOKEN`) or POSTs to
+`WAITLIST_WEBHOOK_URL`, whichever is configured.
+
+- Stored → `200 { ok: true, message, handle }`.
+- Invalid → `400 { ok: false, errors }`.
+- Not stored, in production → `503` with an honest "we cannot take sign-ups"
+  message. Never tell someone they are on the list when nothing was recorded.
+- Not stored, outside production → `200` with `stored: false`, so local
+  development works with no configuration.
+- Storage failures and timeouts count as not stored. The route never 500s.
+
+Never log raw emails or the submission object; log outcomes and provider tags
+only.
 
 ## 10. Waitlist form (Milestone 10 requirement + the scarcity mechanic)
 
@@ -505,6 +522,10 @@ Remaining fields:
 - `channel` — optional select `How did you hear about Radar?` (Telegram,
   Instagram or TikTok, A friend, A poster on campus, A student society, Other).
   This is the attribution hook referenced by `/marketing`.
+- `channelOther` — revealed only when `channel` is `Other`, labelled `Where did
+  you hear about it?`, optional, 80 characters. Validated only when `Other` is
+  selected and dropped otherwise. Its reveal wrapper clips overflow to animate,
+  so it must leave room for the focus ring.
 - `note` — optional textarea ≤ 300 chars, label `What do you miss out on most
   right now?`, with a live character count.
 - Consent checkbox — required: `I'm happy to be contacted about the Radar pilot.`
