@@ -1,4 +1,4 @@
-import { ListChecks, SlidersHorizontal, Sparkles } from 'lucide-react';
+import { Bookmark, SlidersHorizontal, Sparkles } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { Container } from '@/components/primitives/Container';
 import { FeatureCard } from '@/components/primitives/FeatureCard';
@@ -18,9 +18,9 @@ const STEPS: { title: string; body: string; Icon: LucideIcon }[] = [
     Icon: Sparkles,
   },
   {
-    title: 'Plan the deadline',
+    title: 'Save the deadline',
     body: 'Save it, set a reminder, mark it applied, and see everything due in the next 30 days in one view.',
-    Icon: ListChecks,
+    Icon: Bookmark,
   },
 ];
 
