@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { ArrowLeft, Bell, Compass, House, ListChecks, CircleUser } from 'lucide-react';
+import { ArrowLeft, Bell, Compass, House, Bookmark, CircleUser } from 'lucide-react';
 import styles from './ScreenChrome.module.css';
 
 export type ScreenProps = {
@@ -18,7 +18,7 @@ export type ScreenProps = {
 const NAV = [
   { label: 'For You', Icon: House },
   { label: 'Explore', Icon: Compass },
-  { label: 'Plan', Icon: ListChecks },
+  { label: 'Saved', Icon: Bookmark },
   { label: 'Profile', Icon: CircleUser },
 ] as const;
 

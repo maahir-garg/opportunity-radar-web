@@ -113,7 +113,7 @@ const OUTCOMES = [
   {
     goal: 'Goal 3: Act',
     title: 'A deadline plan you can actually keep.',
-    body: 'Saving something records a status and a next action instead of burying it in a bookmark folder. Reminders use the real deadline, and Plan groups everything by when it is due.',
+    body: 'Saving something records a status and a next action instead of burying it in a bookmark folder. Reminders use the real deadline, and Saved groups everything by when it is due.',
     Visual: ActVisual,
   },
 ] as const;

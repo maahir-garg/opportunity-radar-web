@@ -115,7 +115,7 @@ export const features: Feature[] = [
     id: 'F5',
     label: 'Planning',
     icon: 'calendar-clock',
-    title: 'Plan, forecast and reminders',
+    title: 'Saved, forecast and reminders',
     description:
       'Saved items move through Saved, Preparing, Applied and Past. The 30-day Radar keeps confirmed dates visibly separate from expected windows.',
   },
@@ -156,7 +156,7 @@ export const traceabilityRows: TraceabilityRow[] = [
   {
     goal: 'G3: Act',
     features: 'F4, F5',
-    surfaces: 'Detail, reminder setup, Plan, 30-day Radar',
+    surfaces: 'Detail, reminder setup, Saved, 30-day Radar',
     observe:
       'A student saves an item, sets a next action or reminder, and later finds it under the correct status.',
   },
