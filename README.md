@@ -1,151 +1,66 @@
-# NUS Opportunity Radar — marketing site
+# NUS Opportunity Radar landing site
 
-The public marketing site for **NUS Opportunity Radar** (short name: **Radar**), a
-student-built concept that helps NUS students find opportunities before they close.
+A landing page with a sign-up form for NUS Opportunity Radar (short name: Radar), a concept for helping NUS students find opportunities before they close. I built it for CS3216 Assignment 1 as a course project.
 
-Built for **CS3216 Assignment 1**:
+## Status
 
-| Milestone | Where it lives |
-|---|---|
-| **Milestone 10** — publicly accessible landing page with a sign-up form | [`/`](app/page.tsx) — hero, product preview, goals, trust section, FAQ, and the waitlist form at `#waitlist` |
-| **Milestone 11** — small marketing campaign | [`/marketing`](app/marketing/page.tsx) — audience, six channels, video shot list, sample assets, six-week timeline, measurement, risks |
-| Supporting context | [`/about`](app/about/page.tsx) — goals, features, requirement traceability · [`/privacy`](app/privacy/page.tsx) — what the form does and does not do |
+This is a concept site, not a launched product. The product it describes does not exist beyond design mockups, and every listing, organiser, review and date in the product preview is fictional demo content. It is not an official NUS service. The site is live at https://opportunity-radar-web-signup.vercel.app. The repository is not maintained.
 
-> Radar is student-built for NUS students — not an official NUS service. Every
-> listing, organiser, review and date shown in the product preview is fictional
-> demo content used for design testing.
+Whether the deployed form stores sign-ups depends on environment variables I cannot see from the code (see "Sign-up storage" below). If no storage provider is configured, the production API refuses submissions instead of pretending they were saved.
 
-## Running it
+## What it does
+
+The assignment milestones map to these routes:
+
+- `/` (Milestone 10): hero, product preview, goals, trust section, FAQ and the sign-up form at `#waitlist`.
+- `/marketing` (Milestone 11): a small campaign plan covering audience, six channels, a video shot list, sample assets, a six-week timeline, measurement and risks.
+- `/about`: goals, features and requirement traceability.
+- `/privacy`: what the form does and does not do.
+- `POST /api/waitlist`: validates a submission with the same `validateWaitlist` function the client uses, then hands it to the storage layer.
+
+The sign-up form includes a handle reservation field checked against a small hard-coded reserved list as you type, and a follow-up free-text field that appears only when "Other" is chosen under "How did you hear about Radar?". The product preview is three static phone-frame screens built from fictional data in `data/mock-data.json`, with dates pinned to a prototype "today" of 28 August 2026 and formatted in Asia/Singapore so the page renders the same everywhere.
+
+## Tech stack
+
+- Next.js 16 (App Router) with React 19 and TypeScript
+- CSS Modules, with design tokens in `app/radar-tokens.css`; no CSS framework
+- lucide-react for icons and Manrope through `next/font/google`
+- Hosted on Vercel
+
+## Running it locally
 
 ```bash
 npm install
-npm run dev
+npm run dev      # http://localhost:3000
 ```
 
-Then open <http://localhost:3000>.
-
-```bash
-npm run build   # production build
-npm run start   # serve the production build
-npm run lint    # eslint
-```
-
-Node 18.18+ is required (developed on Node 26, Next.js 16).
-
-## Deploying to Vercel
-
-The repository is a stock Next.js App Router project, so Vercel needs no
-configuration beyond the defaults:
-
-1. Push this folder to a Git repository.
-2. In Vercel, **Add New → Project**, import the repository, and keep the detected
-   framework preset (**Next.js**). No build or output overrides are needed.
-3. Optionally set `NEXT_PUBLIC_SITE_URL` to the deployed origin (e.g.
-   `https://opportunity-radar.vercel.app`) so canonical URLs, the sitemap and the
-   Open Graph image resolve against the real domain.
-4. Deploy, and hand the resulting URL in for Milestone 10.
-
-There is no database, no environment secret and no external API, so a preview
-deployment is fully functional.
-
-## The sign-up form
-
-The assignment only requires the form to collect a visitor's information, but this
-one actually stores it once you configure a provider (see "Sign-up storage" below).
-`POST /api/waitlist` validates the submission with the same
-[`validateWaitlist`](lib/waitlist.ts) function the client uses, hands a valid
-submission to the storage layer, and returns a success or a field-level error map.
-`/privacy` describes what is and is not done with a stored entry.
-
-The form does implement the two tactics the course suggests for a pre-launch
-landing page: a stated scarcity ("the first pilot opens to 100 students" — our own
-plan, never a fabricated count of people who have already joined) and a
-**reserved handle**, checked against a local reserved list as you type.
-
-The "How did you hear about Radar?" field reveals a short free-text follow-up,
-`channelOther`, only when the visitor picks "Other": the attribution hook the
-`/marketing` page's measurement section refers to.
+Other scripts: `npm run build`, `npm run start` and `npm run lint`. No environment variables are needed to run the site. In development, the sign-up form returns success without storing anything when no provider is configured.
 
 ## Sign-up storage
 
-`POST /api/waitlist` stores nothing until you configure one of two providers,
-resolved in this order by [`lib/waitlist-store.ts`](lib/waitlist-store.ts):
+`lib/waitlist-store.ts` uses the first provider that is configured:
 
-1. **Upstash Redis / Vercel KV** (`KV_REST_API_URL` + `KV_REST_API_TOKEN`):
-   recommended. In the Vercel dashboard: **Storage → Create Database**, add the
-   Upstash-backed KV integration to this project, and Vercel injects both
-   environment variables into the project automatically, no secrets to copy by
-   hand. Each accepted submission is `RPUSH`ed as a JSON string onto
-   `waitlist:submissions`, and the handle is reserved with `SETNX` first so the
-   same handle can never silently claim two entries.
-2. **A generic webhook** (`WAITLIST_WEBHOOK_URL`): every accepted submission is
-   POSTed as JSON to this URL. Point it at Zapier, Make, n8n, a Discord/Slack
-   incoming webhook, or an endpoint you write yourself. Only used when the KV
-   variables above are not set.
-3. **Neither configured**: nothing is stored. In production the API returns a
-   clear `503` (`"We cannot take sign-ups at the moment. Please try again
-   later."`) instead of ever telling a visitor they are on the list when nothing
-   was recorded. In local development it logs a warning and still returns
-   success, so `npm run dev` keeps working without any setup.
+1. Upstash Redis or Vercel KV, using `KV_REST_API_URL` and `KV_REST_API_TOKEN`. Each accepted submission is pushed onto a list, and the handle is reserved first so one handle cannot claim two entries.
+2. A generic webhook, using `WAITLIST_WEBHOOK_URL`. Each accepted submission is posted to it as JSON. It is only used when the KV variables are not set.
+3. Neither: nothing is stored. In production the API returns a 503 with an error message; in development it logs a warning and returns success.
 
-See [`.env.example`](.env.example) for both variable pairs with comments. The
-storage call has a 5-second timeout and never throws past the route handler, so
-a slow or unreachable provider degrades to the "not stored" path above rather
-than a 500. The route never logs a raw email address or the submission itself,
-only outcome counts.
+The storage call has a 5-second timeout, and the route does not log email addresses or submissions. `NEXT_PUBLIC_SITE_URL` is optional and sets the base URL for canonical links, the sitemap and the Open Graph image. See `.env.example` for all four names.
 
-### Setting it up on the deployed site
-
-The env vars above must be set in the Vercel project, not just locally:
-**Project → Settings → Environment Variables**, add the ones for whichever
-provider you chose, then redeploy (Vercel does this automatically on the next
-push, or trigger one manually from the Deployments tab). Adding the KV
-integration through **Storage → Create Database** sets its two variables for
-you automatically; for a webhook, add `WAITLIST_WEBHOOK_URL` yourself as a
-plain environment variable.
-
-## How it is built
-
-- **Next.js 16** (App Router, Turbopack) + **React 19** + **TypeScript** (strict).
-- **CSS Modules** only. Every colour, space, radius, type step, shadow, duration
-  and easing comes from [`app/radar-tokens.css`](app/radar-tokens.css) — the web
-  translation of the design system's token file. No raw hex or arbitrary spacing
-  appears anywhere else in the codebase.
-- **lucide-react** for icons, **Manrope** via `next/font/google`.
-- No CSS framework, no UI kit, no form library, no animation library.
+## Project layout
 
 ```
-app/                  routes: /, /marketing, /about, /privacy, /api/waitlist
-components/
-  primitives/         Button, Container, Section, SectionHeader, Chip, RadarMark…
-  site/               header, footer, skip link
-  landing/            the landing page sections
-  product/            the product-preview components and the three phone screens
-  marketing/          the campaign page sections
-  about/              the about page sections
-  waitlist/           the sign-up form, handle field, interest picker, success panel
-lib/                  types, mock data access, SGT date formatting, validation
-data/mock-data.json   the fictional demo catalogue
-design-system/        the source design system this site implements
-docs/BUILD-CONTRACT.md the build rules every part of this site follows
+app/                   routes: /, /marketing, /about, /privacy, /api/waitlist
+components/            primitives, landing, product preview, marketing, about, waitlist form
+lib/                   types, mock data access, date formatting, validation, handle rules, storage
+data/mock-data.json    the fictional demo catalogue
+design-system/         the design system and product specification the site implements
+docs/BUILD-CONTRACT.md the build rules used while making the site
 ```
 
-### Deterministic dates
+## Tests and checks
 
-The preview is pinned to a prototype "today" of **28 Aug 2026** (from
-`data/mock-data.json`) and every date is formatted in `Asia/Singapore`, so the
-site renders identically on any machine and in any timezone — deadlines never
-drift and screenshots stay stable.
-
-### Accessibility
-
-One `<main>` and one `<h1>` per page, a skip link, a keyboard-operable tab
-switcher and disclosure menu, visible focus rings from the design tokens, 44px
-touch targets, labelled form fields with an error summary, polite live regions for
-form and availability feedback, and state that is never signalled by colour alone.
+There is no test suite. `npm run lint` runs ESLint.
 
 ## Credits
 
-Design system and product specification: `design-system/`. This site implements
-that system; it does not restate the interactive prototype, which is a separate
-Assignment 1 deliverable.
+The design system and product specification are in `design-system/`. The interactive prototype is a separate Assignment 1 deliverable and is not part of this repository.
